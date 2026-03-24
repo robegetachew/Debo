@@ -6,8 +6,9 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function initDb() {
+    const dbPath = process.env.DATABASE_PATH || path.join(__dirname, 'wedding.db');
     const db = await open({
-        filename: path.join(__dirname, 'wedding.db'),
+        filename: dbPath,
         driver: sqlite3.Database
     });
 
