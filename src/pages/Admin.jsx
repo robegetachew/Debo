@@ -18,7 +18,7 @@ const Admin = () => {
         setLoading(true);
         setError('');
         try {
-            const response = await fetch('http://localhost:5001/api/admin/rsvps', {
+            const response = await fetch('/api/admin/rsvps', {
                 headers: { 'x-admin-password': pwd }
             });
             if (response.ok) {
