@@ -9,13 +9,26 @@ const RSVP = () => {
         guests: 1,
         message: ''
     });
+    const [guestsInput, setGuestsInput] = useState('1');
 
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState('');
 
-    const handleGuestChange = (count) => {
-        const guestsCount = Math.max(1, parseInt(count) || 1);
+    const handleGuestChange = (rawValue) => {
+        // Allow temporary empty value so users can replace "1" with another number naturally.
+        if (rawValue === '') {
+            setGuestsInput('');
+            return;
+        }
+
+        const parsed = Number(rawValue);
+        if (!Number.isInteger(parsed)) {
+            return;
+        }
+
+        const guestsCount = Math.max(1, Math.min(10, parsed));
+        setGuestsInput(String(guestsCount));
         const newNames = [...formData.names];
 
         if (guestsCount > newNames.length) {
@@ -59,6 +72,7 @@ const RSVP = () => {
                     attending: 'yes',
                     message: ''
                 });
+                setGuestsInput('1');
             } else {
                 setStatus('Something went wrong. Please try again.');
             }
@@ -194,9 +208,15 @@ const RSVP = () => {
                                     type="number"
                                     min="1"
                                     max="10"
-                                    value={formData.guests}
+                                    value={guestsInput}
                                     style={inputStyle}
                                     onChange={(e) => handleGuestChange(e.target.value)}
+                                    onFocus={(e) => e.target.select()}
+                                    onBlur={() => {
+                                        if (guestsInput === '') {
+                                            handleGuestChange('1');
+                                        }
+                                    }}
                                 />
                             </InputField>
 

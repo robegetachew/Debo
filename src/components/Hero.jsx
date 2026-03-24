@@ -12,7 +12,7 @@ const Hero = () => {
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
-            background: 'linear-gradient(rgba(250, 243, 224, 0.85), rgba(250, 243, 224, 0.85)), url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat'
+            background: 'linear-gradient(rgba(250, 243, 224, 0.85), rgba(250, 243, 224, 0.85)), url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat'
         }}>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}

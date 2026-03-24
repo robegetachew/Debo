@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import SaveTheDate from './components/SaveTheDate';
 import StoryCountdown from './components/StoryCountdown';
 import VenueDetails from './components/VenueDetails';
+import Gallery from './components/Gallery';
 import Program from './components/Program';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
@@ -18,9 +19,10 @@ const Invitation = () => (
     <ScrollReveal><SaveTheDate /></ScrollReveal>
     <ScrollReveal><StoryCountdown targetDate="2026-05-03T00:00:00" /></ScrollReveal>
     <ScrollReveal><VenueDetails /></ScrollReveal>
+    <ScrollReveal><Gallery /></ScrollReveal>
     <ScrollReveal><Program /></ScrollReveal>
     <ScrollReveal><RSVP /></ScrollReveal>
-    <Footer />
+    <ScrollReveal amount={0.2}><Footer /></ScrollReveal>
   </>
 );
 

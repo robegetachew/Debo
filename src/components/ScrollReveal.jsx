@@ -1,26 +1,15 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
-const ScrollReveal = ({ children }) => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "center center"]
-    });
-
-    const blur = useTransform(scrollYProgress, [0, 1], ["8px", "0px"]);
-    const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-    const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+const ScrollReveal = ({ children, amount = 0.2 }) => {
+    const clampedAmount = Math.max(0.1, Math.min(0.7, amount));
 
     return (
         <motion.div
-            ref={ref}
-            style={{
-                filter: `blur(${blur})`,
-                opacity,
-                scale,
-                transition: 'filter 0.3s ease'
-            }}
+            initial={{ opacity: 0, y: 28, scale: 0.985, filter: 'blur(6px)' }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: clampedAmount }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ willChange: 'transform, filter, opacity' }}
         >
             {children}
         </motion.div>

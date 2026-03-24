@@ -49,7 +49,10 @@ const StoryCountdown = ({ targetDate }) => {
     });
 
     return (
-        <section className="story-countdown" style={{ background: 'var(--bg)', padding: '120px 0' }}>
+        <section className="story-countdown" style={{
+            background: 'linear-gradient(rgba(250, 243, 224, 0.93), rgba(250, 243, 224, 0.93)), url("https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
+            padding: '120px 0'
+        }}>
             <div className="container" style={{ maxWidth: '850px', textAlign: 'center' }}>
                 {/* Countdown Part */}
                 <motion.div
@@ -130,9 +133,12 @@ const StoryCountdown = ({ targetDate }) => {
                             Our story is a testimony of God’s faithfulness and the beauty of a promise kept.
                             What began as a simple connection grew into a journey built on trust, prayer, and integrity.
                         </p>
-                        <p>
+                        <p style={{ marginBottom: '1.5rem' }}>
                             With God at the center, we have held onto His word and to each other with sincerity and purpose.
-                            Now we are going step into this covenant of marriage, not only in love, but in the strength of promises we are committed to keep for a lifetime.
+                            Now we are going to step into this covenant of marriage, not only in love, but in the strength of promises we are committed to keep for a lifetime.
+                        </p>
+                        <p>
+                            This love is not our doing, but God’s only, to Him alone be all the glory.
                         </p>
                     </div>
                 </motion.div>

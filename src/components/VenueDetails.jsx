@@ -81,7 +81,7 @@ const VenueDetails = () => {
             delay: 0.3
         },
         {
-            title: "The Resort",
+            title: "The Reception",
             location: "Kereyou Resort",
             detail: "Join us for cocktails, dinner, and celebration under the stars following the service.",
             icon: Calendar,

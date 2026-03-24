@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5001;
 
 const app = express();
 const distPath = path.join(__dirname, '../dist');
-const ADMIN_PASSWORD = 'wedding2026'; // Simple password for demo
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'change-me';
 
 app.use(cors());
 app.use(express.json());
