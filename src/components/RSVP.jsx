@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Users, Check, MessageSquareHeart } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const RSVP = () => {
     const [formData, setFormData] = useState({
         names: [''], // Array of names
@@ -54,7 +56,7 @@ const RSVP = () => {
         setStatus('');
 
         try {
-            const response = await fetch('/api/rsvp', {
+            const response = await fetch(`${API_BASE}/api/rsvp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

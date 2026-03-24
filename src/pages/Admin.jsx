@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, CheckCircle, XCircle, MessageSquare, ShieldCheck, LogOut, ChevronLeft } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const Admin = () => {
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -18,7 +20,7 @@ const Admin = () => {
         setLoading(true);
         setError('');
         try {
-            const response = await fetch('/api/admin/rsvps', {
+            const response = await fetch(`${API_BASE}/api/admin/rsvps`, {
                 headers: { 'x-admin-password': pwd }
             });
             if (response.ok) {
