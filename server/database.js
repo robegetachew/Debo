@@ -7,12 +7,31 @@ import fs from 'fs/promises';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function initDb() {
-    const dbPath = process.env.DATABASE_PATH || path.join(__dirname, 'wedding.db');
-    await fs.mkdir(path.dirname(dbPath), { recursive: true });
-    const db = await open({
-        filename: dbPath,
-        driver: sqlite3.Database
-    });
+    const defaultPath = path.join(__dirname, 'wedding.db');
+    const configuredPath = process.env.DATABASE_PATH;
+    const candidatePaths = configuredPath ? [configuredPath, defaultPath] : [defaultPath];
+
+    let db;
+    let lastError;
+
+    for (const dbPath of candidatePaths) {
+        try {
+            await fs.mkdir(path.dirname(dbPath), { recursive: true });
+            db = await open({
+                filename: dbPath,
+                driver: sqlite3.Database
+            });
+            console.log(`Using database path: ${dbPath}`);
+            break;
+        } catch (error) {
+            lastError = error;
+            console.warn(`Failed to use database path "${dbPath}": ${error.code || error.message}`);
+        }
+    }
+
+    if (!db) {
+        throw lastError;
+    }
 
     await db.exec(`
         CREATE TABLE IF NOT EXISTS rsvps (
