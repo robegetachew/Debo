@@ -37,7 +37,7 @@ const StoryCountdown = ({ targetDate }) => {
         if (interval === 'isPassed') return;
 
         timerComponents.push(
-            <div key={interval} className="timer-item" style={{ textAlign: 'center', minWidth: '70px' }}>
+            <div key={interval} className="timer-item" style={{ textAlign: 'center', minWidth: '0' }}>
                 <div style={{ fontSize: '2.2rem', fontWeight: '400', color: 'var(--primary)', marginBottom: '5px' }}>
                     {timeLeft[interval]}
                 </div>
@@ -92,12 +92,18 @@ const StoryCountdown = ({ targetDate }) => {
                         __html: `
                         @media (max-width: 480px) {
                             .countdown-grid {
-                                grid-template-columns: repeat(2, 1fr) !important;
-                                gap: 20px !important;
-                                padding: 25px 15px !important;
+                                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                                gap: 10px !important;
+                                padding: 20px 12px !important;
                             }
+                            .timer-item { min-width: 0 !important; }
                             .timer-item div:first-child {
-                                fontSize: 1.8rem !important;
+                                font-size: 1.35rem !important;
+                                margin-bottom: 4px !important;
+                            }
+                            .timer-item div:last-child {
+                                font-size: 0.6rem !important;
+                                letter-spacing: 0.6px !important;
                             }
                         }
                     `}} />

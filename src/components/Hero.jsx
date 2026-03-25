@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Leaf } from 'lucide-react';
+import { Circle, Gem } from 'lucide-react';
 
 const Hero = () => {
     return (
@@ -23,10 +23,32 @@ const Hero = () => {
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    style={{ marginBottom: '2rem', color: 'var(--primary)' }}
+                    transition={{ delay: 0.45, duration: 0.7 }}
+                    style={{ marginBottom: '1.7rem', display: 'flex', justifyContent: 'center' }}
                 >
-                    <Leaf size={40} />
+                    <div style={{ position: 'relative', width: '90px', height: '64px' }}>
+                        <Circle
+                            size={38}
+                            strokeWidth={2.2}
+                            style={{ position: 'absolute', left: 14, top: 24, color: 'rgba(60, 51, 47, 0.9)' }}
+                        />
+                        <Circle
+                            size={38}
+                            strokeWidth={2.2}
+                            style={{ position: 'absolute', left: 38, top: 20, color: 'rgba(212, 175, 55, 0.96)' }}
+                        />
+                        <Gem
+                            size={15}
+                            strokeWidth={2.1}
+                            style={{
+                                position: 'absolute',
+                                left: 54,
+                                top: 8,
+                                transform: 'rotate(8deg)',
+                                color: 'rgba(212, 175, 55, 0.96)'
+                            }}
+                        />
+                    </div>
                 </motion.div>
 
                 <p className="italic" style={{ fontSize: '1.2rem', color: 'var(--primary-light)', marginBottom: '1rem' }}>
