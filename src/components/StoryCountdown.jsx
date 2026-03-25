@@ -61,12 +61,12 @@ const StoryCountdown = ({ targetDate }) => {
                     viewport={{ once: true }}
                     style={{ marginBottom: '80px', padding: '0 10px' }}
                 >
-                    <h2 className="font-serif" style={{
+                    <h2 className="font-serif countdown-title" style={{
                         fontSize: 'clamp(1rem, 4.2vw, 2.2rem)',
                         marginBottom: '2.5rem',
                         color: 'var(--text)',
                         lineHeight: '1.2',
-                        whiteSpace: 'nowrap'
+                        padding: '0 12px'
                     }}>
                         {timeLeft.isPassed ? "Celebrating Our Married Life Together" : "Counting Down to Our Special Day"}
                     </h2>
@@ -91,6 +91,14 @@ const StoryCountdown = ({ targetDate }) => {
                     <style dangerouslySetInnerHTML={{
                         __html: `
                         @media (max-width: 480px) {
+                            .countdown-title {
+                                font-size: 1.35rem !important;
+                                line-height: 1.25 !important;
+                                white-space: normal !important;
+                                overflow-wrap: anywhere !important;
+                                padding: 0 16px !important;
+                                margin-bottom: 1.5rem !important;
+                            }
                             .countdown-grid {
                                 grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
                                 gap: 10px !important;
