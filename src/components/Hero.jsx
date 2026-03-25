@@ -66,8 +66,10 @@ const Hero = () => {
                     and with the blessing of our families
                 </p>
 
-                <h1 style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)' }}>
-                    Tesfatsion <span style={{ color: 'var(--gold)' }}>&</span> Dibora
+                <h1 className="hero-names" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)' }}>
+                    <span className="hero-name-part">Tesfatsion</span>{' '}
+                    <span className="hero-name-amp" style={{ color: 'var(--gold)' }}>&</span>{' '}
+                    <span className="hero-name-part">Dibora</span>
                 </h1>
 
                 <p style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 1.25rem', color: 'var(--text-light)' }}>
@@ -109,6 +111,17 @@ const Hero = () => {
                 __html: `
                     @media (max-width: 640px) {
                         .hero-top-image { min-height: 42svh !important; }
+                        .hero-names {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 0.2rem;
+                        }
+                        .hero-name-part,
+                        .hero-name-amp {
+                            display: block;
+                            line-height: 1.05;
+                        }
                     }
                 `
             }} />
