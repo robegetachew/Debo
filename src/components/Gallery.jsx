@@ -213,11 +213,43 @@ const Gallery = () => {
                         @media (max-width: 640px) {
                             .gallery-pro-grid {
                                 grid-template-columns: 1fr;
-                                grid-auto-rows: 280px;
+                                grid-auto-rows: 265px;
+                                gap: 14px;
+                                padding: 0 8px;
+                            }
+
+                            .gallery-card,
+                            .gallery-card.feature,
+                            .gallery-card.portrait,
+                            .gallery-card.square,
+                            .gallery-card.wide {
+                                border-radius: 136px 28px 152px 32px / 34px 168px 38px 146px;
+                                box-shadow: 0 10px 22px rgba(62, 39, 35, 0.1);
+                                transform: rotate(-1.2deg);
+                            }
+
+                            .gallery-pro-grid > .gallery-card:nth-child(2n) {
+                                border-radius: 34px 166px 42px 148px / 174px 34px 152px 28px;
+                                transform: rotate(1.1deg) translateY(4px);
+                            }
+
+                            .gallery-pro-grid > .gallery-card:nth-child(3n) {
+                                border-radius: 178px 40px 126px 30px / 42px 184px 34px 162px;
+                                transform: rotate(-1.4deg) translateY(-4px);
+                            }
+
+                            .gallery-pro-grid > .gallery-card:nth-child(4n) {
+                                border-radius: 40px 188px 30px 136px / 194px 34px 176px 30px;
+                                transform: rotate(1.4deg) translateY(6px);
+                            }
+
+                            .gallery-pro-grid > .gallery-card:nth-child(5n) {
+                                border-radius: 158px 32px 182px 36px / 36px 190px 40px 164px;
+                                transform: rotate(-1deg) translateY(-6px);
                             }
 
                             .gallery-overlay h4 {
-                                font-size: 1rem;
+                                font-size: 0.92rem;
                             }
                         }
                     `
