@@ -4,7 +4,8 @@ import { Circle, Gem } from 'lucide-react';
 const Hero = () => {
     return (
         <section className="hero" style={{
-            height: '100vh',
+            minHeight: '100svh',
+            height: 'auto',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -12,6 +13,7 @@ const Hero = () => {
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
+            padding: '72px 5% 42px',
             background: 'linear-gradient(rgba(250, 243, 224, 0.85), rgba(250, 243, 224, 0.85)), url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat'
         }}>
             <motion.div
@@ -51,16 +53,16 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                <p className="italic" style={{ fontSize: '1.2rem', color: 'var(--primary-light)', marginBottom: '1rem' }}>
+                <p className="italic" style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
                     By the Grace of God<br />
                     and with the blessing of our families
                 </p>
 
-                <h1 style={{ fontSize: 'clamp(3rem, 10vw, 5rem)', margin: '1rem 0', fontWeight: '400', color: 'var(--text)' }}>
+                <h1 style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)' }}>
                     Tesfatsion <span style={{ color: 'var(--gold)' }}>&</span> Dibora
                 </h1>
 
-                <p style={{ fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--text-light)' }}>
+                <p style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 1.25rem', color: 'var(--text-light)' }}>
                     Joyfully invite you to witness and celebrate the Union of Marriage
                 </p>
 
@@ -69,17 +71,17 @@ const Hero = () => {
                         Sunday, May 3, 2026
                     </p>
                     <p style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
-                        Adama Bethel MKC Church & Kereyou Resort
+                        Adama Bethel MKC Church 
                     </p>
                 </div>
 
-                <div className="spacer" />
+                <div style={{ height: '1rem' }} />
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2, duration: 1 }}
-                    style={{ fontStyle: 'italic', marginBottom: '2.5rem', maxWidth: '500px', margin: '0 auto 2.5rem' }}
+                    style={{ fontStyle: 'italic', maxWidth: '500px', margin: '0 auto 1.5rem', fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}
                 >
                     “What God has joined together, let no one separate.” <br />
                     — Mark 10:9
