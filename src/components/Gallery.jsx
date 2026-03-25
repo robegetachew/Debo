@@ -56,12 +56,12 @@ const Gallery = () => {
                     </motion.div>
 
                     <h2
-                        className="font-serif"
+                        className="font-serif gallery-title"
                         style={{
-                            fontSize: 'clamp(2.6rem, 8vw, 4.8rem)',
+                            fontSize: 'clamp(2.2rem, 7vw, 4.6rem)',
                             color: 'var(--primary)',
-                            marginBottom: '1.1rem',
-                            lineHeight: 1
+                            marginBottom: '1rem',
+                            lineHeight: 0.98
                         }}
                     >
                         Moments of{' '}
@@ -70,12 +70,13 @@ const Gallery = () => {
                         </span>
                     </h2>
                     <p
+                        className="gallery-subtitle"
                         style={{
                             color: 'var(--text-light)',
                             maxWidth: '560px',
                             margin: '0 auto',
-                            fontSize: '0.95rem',
-                            letterSpacing: '1.2px',
+                            fontSize: 'clamp(0.82rem, 2vw, 0.95rem)',
+                            letterSpacing: '1px',
                             textTransform: 'uppercase',
                             opacity: 0.72
                         }}
@@ -211,6 +212,15 @@ const Gallery = () => {
                         }
 
                         @media (max-width: 640px) {
+                            .gallery-title {
+                                font-size: 2rem !important;
+                                line-height: 1.02 !important;
+                                margin-bottom: 0.7rem !important;
+                            }
+                            .gallery-subtitle {
+                                font-size: 0.74rem !important;
+                                letter-spacing: 0.8px !important;
+                            }
                             .gallery-pro-grid {
                                 grid-template-columns: 1fr;
                                 grid-auto-rows: 265px;

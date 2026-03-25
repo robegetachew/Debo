@@ -33,10 +33,10 @@ const SaveTheDate = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="container"
+                className="container save-date-container"
             >
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--primary)' }}>Save the Date</h2>
-                <p style={{ color: 'var(--text-light)', marginBottom: '3rem', letterSpacing: '2px', textTransform: 'uppercase' }}>Sunday, May 03, 2026</p>
+                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '0.8rem', color: 'var(--primary)' }}>Save the Date</h2>
+                <p className="save-date-subtitle" style={{ color: 'var(--text-light)', marginBottom: '2.5rem', letterSpacing: '1.4px', textTransform: 'uppercase', fontSize: 'clamp(0.78rem, 2vw, 0.94rem)' }}>Sunday, May 03, 2026</p>
 
                 {/* Calendar Card */}
                 <motion.div
@@ -44,8 +44,9 @@ const SaveTheDate = () => {
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="glass"
+                    className="glass save-date-card"
                     style={{
+                        width: '100%',
                         maxWidth: '350px',
                         margin: '0 auto 3rem',
                         padding: '2.5rem',
@@ -71,7 +72,7 @@ const SaveTheDate = () => {
                     />
                     <div style={{ position: 'relative', zIndex: 1 }}>
                         <div style={{ marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
-                            <h3 className="font-serif" style={{ fontSize: '1.8rem', color: 'var(--primary)' }}>May 2026</h3>
+                            <h3 className="font-serif" style={{ fontSize: 'clamp(1.4rem, 4.4vw, 1.8rem)', color: 'var(--primary)' }}>May 2026</h3>
                         </div>
 
                         <div style={{
@@ -153,7 +154,7 @@ const SaveTheDate = () => {
                     </div>
                 </motion.div>
 
-                <p style={{ maxWidth: '500px', margin: '0 auto 2.5rem', color: 'var(--text-light)', lineHeight: '1.8' }}>
+                <p className="save-date-description" style={{ maxWidth: '560px', margin: '0 auto 2.2rem', color: 'var(--text-light)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
                     Please reserve this special day and celebrate with us as we begin our new life together in Christ.
                 </p>
 
@@ -166,6 +167,28 @@ const SaveTheDate = () => {
                     Add to Calendar
                 </motion.button>
             </motion.div>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    @media (max-width: 640px) {
+                        .save-the-date {
+                            padding-left: 0 !important;
+                            padding-right: 0 !important;
+                        }
+                        .save-date-container {
+                            max-width: 100% !important;
+                        }
+                        .save-date-card {
+                            max-width: 100% !important;
+                            margin: 0 0 2rem !important;
+                            padding: 1.2rem !important;
+                            border-radius: 0 !important;
+                        }
+                        .save-date-title { font-size: 1.9rem !important; }
+                        .save-date-subtitle { letter-spacing: 1px !important; margin-bottom: 1.8rem !important; }
+                        .save-date-description { font-size: 0.92rem !important; line-height: 1.7 !important; }
+                    }
+                `
+            }} />
         </section>
     );
 };

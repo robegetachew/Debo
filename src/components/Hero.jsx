@@ -28,12 +28,14 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="container"
+                id="hero-content"
                 style={{ padding: '28px 5% 42px' }}
             >
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.45, duration: 0.7 }}
+                    className="hero-ring-wrap"
                     style={{ marginBottom: '1.7rem', display: 'flex', justifyContent: 'center' }}
                 >
                     <div style={{ position: 'relative', width: '90px', height: '64px' }}>
@@ -61,7 +63,7 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                <p className="italic" style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
+                <p className="italic hero-blessing" style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
                     By the Grace of God<br />
                     and with the blessing of our families
                 </p>
@@ -72,25 +74,26 @@ const Hero = () => {
                     <span className="hero-name-part">Dibora</span>
                 </h1>
 
-                <p style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 1.25rem', color: 'var(--text-light)' }}>
-                    Joyfully invite you to witness and celebrate the Union of Marriage
+                <p className="hero-invite" style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 1.25rem', color: 'var(--text-light)' }}>
+                    Joyfully invite you to witness and celebrate the union of our marriage
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
-                    <p className="font-serif" style={{ fontSize: '1.5rem', fontWeight: '500' }}>
+                <div className="hero-date-block" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+                    <p className="font-serif hero-date" style={{ fontSize: '1.5rem', fontWeight: '500' }}>
                         Sunday, May 3, 2026
                     </p>
-                    <p style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
+                    <p className="hero-location" style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
                         Adama Bethel MKC Church 
                     </p>
                 </div>
 
-                <div style={{ height: '1rem' }} />
+                <div className="hero-gap" style={{ height: '1rem' }} />
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2, duration: 1 }}
+                    className="hero-quote"
                     style={{ fontStyle: 'italic', maxWidth: '500px', margin: '0 auto 1.5rem', fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}
                 >
                     “What God has joined together, let no one separate.” <br />
@@ -100,7 +103,7 @@ const Hero = () => {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn-primary"
+                    className="btn-primary hero-cta"
                     onClick={() => document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' })}
                 >
                     Join Us / RSVP
@@ -110,18 +113,33 @@ const Hero = () => {
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @media (max-width: 640px) {
-                        .hero-top-image { min-height: 42svh !important; }
+                        .hero {
+                            min-height: 100svh !important;
+                        }
+                        .hero-top-image { min-height: 34svh !important; }
+                        #hero-content { padding: 14px 5% 18px !important; }
+                        .hero-ring-wrap { margin-bottom: 0.6rem !important; transform: scale(0.88); }
+                        .hero-blessing { font-size: 0.85rem !important; margin-bottom: 0.4rem !important; }
                         .hero-names {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            gap: 0.2rem;
+                            gap: 0.1rem;
+                            font-size: clamp(1.8rem, 8.2vw, 2.35rem) !important;
+                            margin: 0.3rem 0 !important;
                         }
                         .hero-name-part,
                         .hero-name-amp {
                             display: block;
                             line-height: 1.05;
                         }
+                        .hero-invite { font-size: 0.88rem !important; margin: 0 auto 0.6rem !important; max-width: 95% !important; }
+                        .hero-date-block { gap: 6px !important; }
+                        .hero-date { font-size: 1.08rem !important; }
+                        .hero-location { font-size: 0.84rem !important; }
+                        .hero-gap { height: 0.35rem !important; }
+                        .hero-quote { display: none !important; }
+                        .hero-cta { padding: 10px 20px !important; font-size: 0.92rem !important; }
                     }
                 `
             }} />

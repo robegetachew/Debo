@@ -50,7 +50,7 @@ const StoryCountdown = ({ targetDate }) => {
 
     return (
         <section className="story-countdown" style={{
-            background: 'linear-gradient(rgba(250, 243, 224, 0.93), rgba(250, 243, 224, 0.93)), url("https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
+            background: 'linear-gradient(rgba(250, 243, 224, 0.82), rgba(250, 243, 224, 0.82)), url("https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
             padding: '120px 0'
         }}>
             <div className="container" style={{ maxWidth: '850px', textAlign: 'center' }}>
@@ -62,7 +62,7 @@ const StoryCountdown = ({ targetDate }) => {
                     style={{ marginBottom: '80px', padding: '0 10px' }}
                 >
                     <h2 className="font-serif countdown-title" style={{
-                        fontSize: 'clamp(1rem, 4.2vw, 2.2rem)',
+                        fontSize: 'clamp(1.2rem, 4.3vw, 2.4rem)',
                         marginBottom: '2.5rem',
                         color: 'var(--text)',
                         lineHeight: '1.2',
@@ -113,6 +113,15 @@ const StoryCountdown = ({ targetDate }) => {
                                 font-size: 0.6rem !important;
                                 letter-spacing: 0.6px !important;
                             }
+                            .story-title {
+                                font-size: 1.85rem !important;
+                                margin-bottom: 1.2rem !important;
+                            }
+                            .story-copy {
+                                font-size: 0.94rem !important;
+                                line-height: 1.72 !important;
+                                text-align: left !important;
+                            }
                         }
                     `}} />
 
@@ -140,9 +149,9 @@ const StoryCountdown = ({ targetDate }) => {
                     transition={{ delay: 0.2 }}
                     style={{ padding: '0 30px' }}
                 >
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '2.5rem', color: 'var(--primary)' }}>Our Story</h2>
+                    <h2 className="story-title" style={{ fontSize: 'clamp(2rem, 5vw, 2.8rem)', marginBottom: '1.8rem', color: 'var(--primary)' }}>Our Story</h2>
 
-                    <div style={{ fontSize: '1.2rem', color: 'var(--text-light)', textAlign: 'justify', lineHeight: '1.8' }}>
+                    <div className="story-copy" style={{ fontSize: 'clamp(0.98rem, 2.8vw, 1.12rem)', color: 'var(--text-light)', textAlign: 'justify', lineHeight: '1.85' }}>
                         <p style={{ marginBottom: '1.5rem' }}>
                             Our story is a testimony of God’s faithfulness and the beauty of a promise kept.
                             What began as a simple connection grew into a journey built on trust, prayer, and integrity.
