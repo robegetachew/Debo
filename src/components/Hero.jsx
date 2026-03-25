@@ -8,19 +8,27 @@ const Hero = () => {
             height: 'auto',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
-            padding: '72px 5% 42px',
-            background: 'linear-gradient(rgba(250, 243, 224, 0.85), rgba(250, 243, 224, 0.85)), url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat'
+            padding: 0,
+            background: 'var(--bg)'
         }}>
+            <div
+                className="hero-top-image"
+                style={{
+                    width: '100%',
+                    minHeight: '52svh',
+                    background: 'url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat'
+                }}
+            />
+
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="container"
+                style={{ padding: '28px 5% 42px' }}
             >
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -96,6 +104,14 @@ const Hero = () => {
                     Join Us / RSVP
                 </motion.button>
             </motion.div>
+
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    @media (max-width: 640px) {
+                        .hero-top-image { min-height: 42svh !important; }
+                    }
+                `
+            }} />
         </section>
     );
 };
