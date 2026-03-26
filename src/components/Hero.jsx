@@ -1,6 +1,22 @@
 import { motion } from 'framer-motion';
 import { Circle, Gem } from 'lucide-react';
 
+const renderAnimatedLetters = (text, startDelay = 0, stagger = 0.02, color) =>
+    Array.from(text).map((char, index) => (
+        <motion.span
+            key={`${text}-${index}`}
+            initial={{ opacity: 0, y: 8, filter: 'blur(2px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ delay: startDelay + index * stagger, duration: 0.33, ease: 'easeOut' }}
+            style={{
+                display: 'inline-block',
+                color: color || 'inherit'
+            }}
+        >
+            {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+    ));
+
 const Hero = () => {
     return (
         <section className="hero" style={{
@@ -64,26 +80,27 @@ const Hero = () => {
                 </motion.div>
 
                 <p className="italic hero-blessing" style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
-                    By the Grace of God<br />
-                    and with the blessing of our families
+                    {renderAnimatedLetters('By the Grace of God', 0.22, 0.018)}
+                    <br />
+                    {renderAnimatedLetters('and with the blessing of our families', 0.6, 0.014)}
                 </p>
 
-                <h1 className="hero-names" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)' }}>
-                    <span className="hero-name-part">Tesfatsion</span>{' '}
-                    <span className="hero-name-amp" style={{ color: 'var(--gold)' }}>&</span>{' '}
-                    <span className="hero-name-part">Dibora</span>
+                <h1 className="hero-names" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)', fontFamily: '"Allura", "Great Vibes", "Playfair Display", serif', letterSpacing: '0.01em' }}>
+                    <span className="hero-name-part">{renderAnimatedLetters('Tesfatsion', 0.95, 0.045)}</span>{' '}
+                    <span className="hero-name-amp" style={{ color: 'var(--gold)' }}>{renderAnimatedLetters('&', 1.46, 0.02, 'var(--gold)')}</span>{' '}
+                    <span className="hero-name-part">{renderAnimatedLetters('Dibora', 1.55, 0.05)}</span>
                 </h1>
 
-                <p className="hero-invite" style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '600px', margin: '0 auto 1.25rem', color: 'var(--text-light)' }}>
-                    Joyfully invite you to witness and celebrate the union of our marriage
+                <p className="hero-invite" style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '1100px', margin: '0 auto 1.25rem', color: 'var(--text-light)', whiteSpace: 'nowrap' }}>
+                    {renderAnimatedLetters('Joyfully invite you to witness and celebrate the union of our marriage', 1.95, 0.011)}
                 </p>
 
                 <div className="hero-date-block" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
                     <p className="font-serif hero-date" style={{ fontSize: '1.5rem', fontWeight: '500' }}>
-                        Sunday, May 3, 2026
+                        {renderAnimatedLetters('Sunday, May 3, 2026', 2.72, 0.022)}
                     </p>
                     <p className="hero-location" style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
-                        Adama Bethel MKC Church 
+                        {renderAnimatedLetters('Adama Bethel MKC Church', 3.14, 0.018)}
                     </p>
                 </div>
 
@@ -134,6 +151,7 @@ const Hero = () => {
                             line-height: 1.05;
                         }
                         .hero-invite { font-size: 0.88rem !important; margin: 0 auto 0.6rem !important; max-width: 95% !important; }
+                        .hero-invite { white-space: normal !important; }
                         .hero-date-block { gap: 6px !important; }
                         .hero-date { font-size: 1.08rem !important; }
                         .hero-location { font-size: 0.84rem !important; }

@@ -35,7 +35,7 @@ const SaveTheDate = () => {
                 viewport={{ once: true }}
                 className="container save-date-container"
             >
-                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '0.8rem', color: 'var(--primary)' }}>Save the Date</h2>
+                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '0.8rem', color: 'var(--primary)', fontFamily: '"Great Vibes", "Playfair Display", serif', fontWeight: '400', letterSpacing: '0.01em' }}>Save the Date</h2>
                 <p className="save-date-subtitle" style={{ color: 'var(--text-light)', marginBottom: '2.5rem', letterSpacing: '1.4px', textTransform: 'uppercase', fontSize: 'clamp(0.78rem, 2vw, 0.94rem)' }}>Sunday, May 03, 2026</p>
 
                 {/* Calendar Card */}
@@ -52,7 +52,7 @@ const SaveTheDate = () => {
                         padding: '2.5rem',
                         borderRadius: '16px',
                         border: '1px solid rgba(92, 64, 51, 0.15)',
-                        background: 'rgba(255, 255, 255, 0.62)',
+                        background: 'rgba(255, 255, 255, 0.48)',
                         boxShadow: '0 20px 40px rgba(62, 39, 35, 0.08)',
                         position: 'relative',
                         overflow: 'hidden'
@@ -66,7 +66,7 @@ const SaveTheDate = () => {
                             background: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop") center/cover no-repeat',
                             filter: 'blur(0px)',
                             transform: 'scale(1.1)',
-                            opacity: 0.2,
+                            opacity: 0.26,
                             zIndex: 0
                         }}
                     />

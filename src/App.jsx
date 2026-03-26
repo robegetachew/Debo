@@ -8,11 +8,13 @@ import Program from './components/Program';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
+import ScrollEffects from './components/ScrollEffects';
 import Admin from './pages/Admin';
 import './styles/globals.css';
 
 const Invitation = () => (
   <>
+    <ScrollEffects />
     <ScrollReveal><Hero /></ScrollReveal>
     <ScrollReveal><SaveTheDate /></ScrollReveal>
     <ScrollReveal><StoryCountdown targetDate="2026-05-03T00:00:00" /></ScrollReveal>

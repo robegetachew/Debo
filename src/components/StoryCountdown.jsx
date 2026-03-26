@@ -76,15 +76,31 @@ const StoryCountdown = ({ targetDate }) => {
                             display: 'grid',
                             gridTemplateColumns: 'repeat(4, 1fr)',
                             gap: '15px',
-                            background: 'white',
+                            background: 'rgba(255, 255, 255, 0.48)',
                             padding: '30px 20px',
                             borderRadius: '24px',
                             boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
                             border: '1px solid rgba(92, 64, 51, 0.05)',
                             maxWidth: '500px',
-                            margin: '0 auto'
+                            margin: '0 auto',
+                            position: 'relative',
+                            overflow: 'hidden'
                         }}>
-                            {timerComponents}
+                            <div
+                                aria-hidden
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop") center/cover no-repeat',
+                                    opacity: 0.26,
+                                    filter: 'blur(1px)',
+                                    transform: 'scale(1.06)',
+                                    zIndex: 0
+                                }}
+                            />
+                            <div style={{ position: 'relative', zIndex: 1, display: 'contents' }}>
+                                {timerComponents}
+                            </div>
                         </div>
                     )}
 
