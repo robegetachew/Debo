@@ -151,7 +151,7 @@ const RSVP = () => {
     });
 
     return (
-        <section id="rsvp" className="rsvp" style={{ background: 'var(--bg)', padding: '120px 5%' }}>
+        <section id="rsvp" className="rsvp" style={{ background: 'var(--bg)', padding: 'var(--section-padding)' }}>
             <div className="container" style={{ maxWidth: '750px' }}>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -159,24 +159,24 @@ const RSVP = () => {
                     viewport={{ once: true }}
                     className="glass"
                     style={{
-                        padding: '60px 50px',
+                        padding: '40px 30px',
                         borderRadius: '32px',
                         background: 'white',
                         boxShadow: '0 30px 80px rgba(92, 64, 51, 0.08)',
                         border: '1px solid rgba(92, 64, 51, 0.05)'
                     }}
                 >
-                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                         <div style={{
                             display: 'inline-flex',
-                            padding: '15px',
+                            padding: '12px',
                             background: 'rgba(212, 175, 55, 0.05)',
                             borderRadius: '20px',
-                            marginBottom: '25px'
+                            marginBottom: '15px'
                         }}>
-                            <MessageSquareHeart size={32} style={{ color: 'var(--gold)' }} />
+                            <MessageSquareHeart size={28} style={{ color: 'var(--gold)' }} />
                         </div>
-                        <h2 className="font-serif" style={{ fontSize: '2.8rem', color: 'var(--primary)', marginBottom: '12px' }}>
+                        <h2 className="font-serif" style={{ fontSize: '2.4rem', color: 'var(--primary)', marginBottom: '10px' }}>
                             Join Our <span style={{ color: 'var(--gold)' }}>Celebration</span>
                         </h2>
                         <p style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '1.1rem' }}>

@@ -17,10 +17,10 @@ const Invitation = () => (
     <ScrollEffects />
     <ScrollReveal><Hero /></ScrollReveal>
     <ScrollReveal><SaveTheDate /></ScrollReveal>
-    <ScrollReveal><StoryCountdown targetDate="2026-05-03T00:00:00" /></ScrollReveal>
+    <ScrollReveal><StoryCountdown /></ScrollReveal>
+    <ScrollReveal><Program /></ScrollReveal>
     <ScrollReveal><VenueDetails /></ScrollReveal>
     <ScrollReveal><Gallery /></ScrollReveal>
-    <ScrollReveal><Program /></ScrollReveal>
     <ScrollReveal><RSVP /></ScrollReveal>
     <ScrollReveal amount={0.2}><Footer /></ScrollReveal>
   </>

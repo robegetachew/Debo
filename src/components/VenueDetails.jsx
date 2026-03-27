@@ -1,4 +1,4 @@
-import { MapPin, Calendar, Home, Navigation } from 'lucide-react';
+import { MapPin, Navigation } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const VenueCard = ({ title, location, detail, icon: Icon, mapUrl, delay }) => (
@@ -60,7 +60,7 @@ const VenueDetails = () => {
             title: "Bride's House",
             location: "Morning Gathering",
             detail: "The journey begins here with traditional blessings and gathering of families.",
-            icon: Home,
+            icon: MapPin,
             mapUrl: "https://maps.google.com/?q=Adama+Ethiopia",
             delay: 0.1
         },
@@ -68,7 +68,7 @@ const VenueDetails = () => {
             title: "Groom's House",
             location: "Departure to Bride",
             detail: "The groom prepares to meet his bride with his family and best men.",
-            icon: Home,
+            icon: MapPin,
             mapUrl: "https://maps.google.com/?q=Adama+Ethiopia",
             delay: 0.2
         },
@@ -84,17 +84,17 @@ const VenueDetails = () => {
             title: "The Reception",
             location: "Kereyou Resort",
             detail: "Join us for cocktails, dinner, and celebration under the stars following the service.",
-            icon: Calendar,
+            icon: MapPin,
             mapUrl: "https://maps.google.com/?q=Kereyou+Resort+Adama",
             delay: 0.4
         }
     ];
 
     return (
-        <section id="venues" className="venues" style={{ background: '#ffffff', padding: '120px 5%' }}>
+        <section id="venues" className="venues" style={{ background: '#ffffff', padding: 'var(--section-padding)' }}>
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-                    <h2 className="font-serif" style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '15px' }}>Location Details</h2>
+                <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                    <h2 className="font-serif" style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '10px' }}>Location Details</h2>
                     <div style={{ height: '2px', width: '60px', background: 'var(--gold)', margin: '0 auto' }}></div>
                 </div>
 

@@ -13,10 +13,10 @@ const Program = () => {
     ];
 
     return (
-        <section id="program" className="program" style={{ background: 'var(--bg)', padding: '120px 5%' }}>
-            <div className="container" style={{ maxWidth: '900px' }}>
-                <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                    <h2 className="font-serif" style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '15px' }}>Wedding Program</h2>
+        <section id="program" className="program" style={{ background: 'var(--bg)', padding: 'var(--section-padding)' }}>
+            <div className="container" style={{ maxWidth: 900 }}>
+                <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                    <h2 className="font-serif" style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '10px' }}>Wedding Program</h2>
                     <div style={{ height: '2px', width: '60px', background: 'var(--gold)', margin: '0 auto' }}></div>
                 </div>
 

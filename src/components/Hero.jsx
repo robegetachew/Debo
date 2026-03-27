@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Circle, Gem } from 'lucide-react';
 
@@ -18,6 +19,31 @@ const renderAnimatedLetters = (text, startDelay = 0, stagger = 0.02, color) =>
     ));
 
 const Hero = () => {
+    const targetDate = '2026-05-03T00:00:00';
+
+    const calculateTimeLeft = () => {
+        const difference = +new Date(targetDate) - +new Date();
+        if (difference <= 0) {
+            return { days: 0, hours: 0, minutes: 0, seconds: 0, isPassed: true };
+        }
+
+        return {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60)
+        };
+    };
+
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <section className="hero" style={{
             minHeight: '100svh',
@@ -35,7 +61,9 @@ const Hero = () => {
                 style={{
                     width: '100%',
                     minHeight: '52svh',
-                    background: 'url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat'
+                    background: 'url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
+                    maskImage: 'linear-gradient(to bottom, black 82%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 82%, transparent)'
                 }}
             />
 
@@ -45,7 +73,7 @@ const Hero = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="container"
                 id="hero-content"
-                style={{ padding: '28px 5% 42px' }}
+                style={{ padding: '20px 5% 30px' }}
             >
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -106,25 +134,75 @@ const Hero = () => {
 
                 <div className="hero-gap" style={{ height: '1rem' }} />
 
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 1 }}
-                    className="hero-quote"
-                    style={{ fontStyle: 'italic', maxWidth: '500px', margin: '0 auto 1.5rem', fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}
-                >
-                    “What God has joined together, let no one separate.” <br />
-                    — Mark 10:9
-                </motion.p>
+                <div className="hero-quote-wrapper" style={{ margin: '2.4rem auto 1.8rem', maxWidth: '600px', position: 'relative' }}>
+                    <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--gold), transparent)', marginBottom: '1.2rem', opacity: 0.35 }} />
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.2, duration: 1 }}
+                        className="hero-quote font-serif"
+                        style={{
+                            fontStyle: 'italic',
+                            fontSize: 'clamp(1.15rem, 4.2vw, 1.45rem)',
+                            color: 'var(--text)',
+                            lineHeight: 1.6,
+                            letterSpacing: '0.01em',
+                            fontWeight: '400'
+                        }}
+                    >
+                        “What God has joined together, let no one separate.” <br />
+                        <span style={{ fontSize: '0.85em', opacity: 0.85, marginTop: '0.6rem', display: 'block', fontStyle: 'normal', color: 'var(--primary-light)' }}>— Mark 10:9</span>
+                    </motion.p>
+                    <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--gold), transparent)', marginTop: '1.2rem', opacity: 0.35 }} />
+                </div>
 
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="btn-primary hero-cta"
-                    onClick={() => document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' })}
+                <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.45, duration: 0.6 }}
+                    className="hero-counter"
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                        gap: '10px',
+                        width: '100%',
+                        maxWidth: '440px',
+                        margin: '0 auto',
+                        padding: '20px 14px',
+                        borderRadius: '16px',
+                        border: 'none',
+                        borderLeft: '1px solid rgba(92, 64, 51, 0.16)',
+                        borderRight: '1px solid rgba(92, 64, 51, 0.16)',
+                        background: 'rgba(255,255,255,0.48)',
+                        position: 'relative',
+                        overflow: 'hidden'
+                    }}
                 >
-                    Join Us / RSVP
-                </motion.button>
+                    <div
+                        aria-hidden
+                        style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop") center/cover no-repeat',
+                            opacity: 0.26,
+                            filter: 'blur(1px)',
+                            transform: 'scale(1.05)',
+                            zIndex: 0
+                        }}
+                    />
+                    <div style={{ position: 'relative', zIndex: 1, display: 'contents' }}>
+                        {['days', 'hours', 'minutes', 'seconds'].map((unit) => (
+                            <div key={unit} style={{ textAlign: 'center' }}>
+                                <div style={{ fontSize: '1.35rem', fontWeight: 600, color: 'var(--primary)', lineHeight: 1.1 }}>
+                                    {timeLeft[unit]}
+                                </div>
+                                <div style={{ fontSize: '0.66rem', textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--text-light)' }}>
+                                    {unit}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </motion.div>
 
             <style dangerouslySetInnerHTML={{
@@ -156,8 +234,19 @@ const Hero = () => {
                         .hero-date { font-size: 1.08rem !important; }
                         .hero-location { font-size: 0.84rem !important; }
                         .hero-gap { height: 0.35rem !important; }
-                        .hero-quote { display: none !important; }
-                        .hero-cta { padding: 10px 20px !important; font-size: 0.92rem !important; }
+                        .hero-quote-wrapper { margin: 1.6rem auto 1.2rem !important; }
+                        .hero-quote { display: block !important; font-size: 1.1rem !important; line-height: 1.5 !important; }
+                        .hero-counter {
+                            max-width: none !important;
+                            width: calc(100% + 10%) !important;
+                            margin-left: -5% !important;
+                            margin-right: -5% !important;
+                            border-radius: 0 !important;
+                            padding: 32px 10px !important;
+                            gap: 6px !important;
+                            border-top: none !important;
+                            border-bottom: none !important;
+                        }
                     }
                 `
             }} />

@@ -1,32 +1,51 @@
 import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
 
 const Footer = () => {
     return (
         <footer style={{
             background: 'var(--primary)',
             color: 'var(--cream)',
-            padding: '100px 20px',
+            padding: '60px 20px 40px',
             textAlign: 'center'
         }}>
             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
             >
-                <Heart size={40} style={{ color: 'var(--primary-light)', marginBottom: '2rem', fill: 'var(--primary-light)' }} />
-                <h2 className="font-serif" style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Closing Blessing</h2>
-                <p style={{ maxWidth: '600px', margin: '0 auto 2rem', fontSize: '1.1rem', opacity: 0.9 }}>
-                    We look forward to celebrating this blessed day with you.<br />
-                    May God bless you abundantly.
-                </p>
+                <div style={{ marginBottom: '3rem' }}>
+                    <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--gold-light)' }}>
+                        Photo Sharing & Livestream
+                    </h3>
+                    <div style={{
+                        display: 'inline-block',
+                        padding: '10px',
+                        background: 'white',
+                        borderRadius: '12px',
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                        marginBottom: '1rem'
+                    }}>
+                        <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer">
+                            <img
+                                src="/telegram-qr.png"
+                                alt="Telegram QR"
+                                style={{ width: '130px', height: '130px', display: 'block' }}
+                            />
+                        </a>
+                    </div>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, letterSpacing: '0.5px' }}>
+                        Scan or <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>click here</a> to join our Telegram channel
+                    </p>
+                </div>
+
                 <div style={{
-                    marginTop: '4rem',
                     paddingTop: '2rem',
-                    borderTop: '1px solid rgba(250, 243, 224, 0.2)',
-                    fontSize: '0.9rem',
+                    borderTop: '1px solid rgba(250, 243, 224, 0.1)',
+                    fontSize: '0.8rem',
                     letterSpacing: '2px',
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
+                    opacity: 0.6
                 }}>
                     Tesfatsion & Dibora • 2026
                 </div>

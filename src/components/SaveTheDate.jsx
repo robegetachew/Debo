@@ -35,8 +35,7 @@ const SaveTheDate = () => {
                 viewport={{ once: true }}
                 className="container save-date-container"
             >
-                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '0.8rem', color: 'var(--primary)', fontFamily: '"Great Vibes", "Playfair Display", serif', fontWeight: '400', letterSpacing: '0.01em' }}>Save the Date</h2>
-                <p className="save-date-subtitle" style={{ color: 'var(--text-light)', marginBottom: '2.5rem', letterSpacing: '1.4px', textTransform: 'uppercase', fontSize: 'clamp(0.78rem, 2vw, 0.94rem)' }}>Sunday, May 03, 2026</p>
+                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontFamily: '"Great Vibes", "Playfair Display", serif', fontWeight: '400', letterSpacing: '0.01em' }}>Save the Date</h2>
 
                 {/* Calendar Card */}
                 <motion.div
@@ -184,7 +183,7 @@ const SaveTheDate = () => {
                             border-radius: 0 !important;
                         }
                         .save-date-title { font-size: 1.9rem !important; }
-                        .save-date-subtitle { letter-spacing: 1px !important; margin-bottom: 1.8rem !important; }
+                        .save-date-title { margin-bottom: 2rem !important; }
                         .save-date-description { font-size: 0.92rem !important; line-height: 1.7 !important; }
                     }
                 `

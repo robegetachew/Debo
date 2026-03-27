@@ -18,8 +18,8 @@
     --gold-light: #F9E076;
     --gold-dark: #B8860B;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --section-padding: 100px 5%;
-    --mobile-padding: 80px 20px;
+    --section-padding: 70px 5%;
+    --mobile-padding: 45px 20px;
 }
 
 .text-gold {
@@ -162,6 +162,7 @@ section {
 }
 
 @media (max-width: 600px) {
+
     .btn-primary,
     .btn-outline {
         width: 100%;
