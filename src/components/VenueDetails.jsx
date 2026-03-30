@@ -1,7 +1,7 @@
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const VenueCard = ({ title, location, detail, icon: Icon, mapUrl, delay }) => (
+const VenueCard = ({ title, mapUrl, delay }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,79 +15,39 @@ const VenueCard = ({ title, location, detail, icon: Icon, mapUrl, delay }) => (
             border: '1px solid var(--gold-light)',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            minHeight: '120px',
             boxShadow: '0 10px 30px rgba(92, 64, 51, 0.05)'
         }}
     >
-        <div>
-            <Icon size={32} style={{ position: 'absolute', top: '30px', right: '30px', color: 'var(--gold)' }} />
-            <h3 className="font-serif" style={{ fontSize: '1.8rem', color: 'var(--primary)', marginBottom: '15px' }}>{title}</h3>
-            <p style={{ color: 'var(--primary-light)', marginBottom: '10px', fontWeight: '500' }}>{location}</p>
-            <p style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '0.9rem', marginBottom: '25px', lineHeight: '1.6' }}>{detail}</p>
-        </div>
-
-        <motion.a
+        <a
             href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            aria-label={`Open ${title} on map`}
             style={{
+                position: 'absolute',
+                top: '30px',
+                right: '30px',
+                color: 'var(--gold)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '10px',
-                padding: '12px',
-                background: 'white',
-                border: '1px solid var(--gold)',
-                borderRadius: '12px',
-                color: 'var(--primary)',
-                textDecoration: 'none',
-                fontSize: '0.9rem',
-                fontWeight: '600',
-                transition: 'all 0.3s ease'
+                transition: 'opacity 0.2s ease'
             }}
         >
-            <Navigation size={16} style={{ color: 'var(--gold)' }} />
-            View on Map
-        </motion.a>
+            <MapPin size={32} />
+        </a>
+        <h3 className="font-serif" style={{ fontSize: '1.8rem', color: 'var(--primary)', margin: 0, paddingRight: '48px' }}>{title}</h3>
     </motion.div>
 );
 
 const VenueDetails = () => {
     const venues = [
-        {
-            title: "Bride's House",
-            location: "Morning Gathering",
-            detail: "The journey begins here with traditional blessings and gathering of families.",
-            icon: MapPin,
-            mapUrl: "https://maps.google.com/?q=Adama+Ethiopia",
-            delay: 0.1
-        },
-        {
-            title: "Groom's House",
-            location: "Departure to Bride",
-            detail: "The groom prepares to meet his bride with his family and best men.",
-            icon: MapPin,
-            mapUrl: "https://maps.google.com/?q=Adama+Ethiopia",
-            delay: 0.2
-        },
-        {
-            title: "The Church",
-            location: "Adama Bethel MKC Church",
-            detail: "The holy matrimony service will begin at 1:00 PM prompt. We ask you to be seated by 12:45 PM.",
-            icon: MapPin,
-            mapUrl: "https://maps.google.com/?q=Adama+Bethel+MKC+Church",
-            delay: 0.3
-        },
-        {
-            title: "The Reception",
-            location: "Kereyou Resort",
-            detail: "Join us for cocktails, dinner, and celebration under the stars following the service.",
-            icon: MapPin,
-            mapUrl: "https://maps.google.com/?q=Kereyou+Resort+Adama",
-            delay: 0.4
-        }
+        { title: "Bride's House", mapUrl: 'https://maps.google.com/?q=Adama+Ethiopia', delay: 0.1 },
+        { title: "Groom's House", mapUrl: 'https://maps.google.com/?q=Adama+Ethiopia', delay: 0.2 },
+        { title: 'The Church', mapUrl: 'https://maps.google.com/?q=Adama+Bethel+MKC+Church', delay: 0.3 },
+        { title: 'The Reception', mapUrl: 'https://maps.google.com/?q=Kereyou+Resort+Adama', delay: 0.4 }
     ];
 
     return (

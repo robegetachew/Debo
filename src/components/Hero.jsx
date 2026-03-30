@@ -62,17 +62,17 @@ const Hero = () => {
                     width: '100%',
                     minHeight: '52svh',
                     background: 'url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
-                    maskImage: 'linear-gradient(to bottom, black 62%, rgba(0,0,0,0.94) 74%, rgba(0,0,0,0.72) 86%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 62%, rgba(0,0,0,0.94) 74%, rgba(0,0,0,0.72) 86%, transparent 100%)'
+                    maskImage: 'linear-gradient(to bottom, black 0%, black 52%, rgba(0,0,0,0.97) 62%, rgba(0,0,0,0.82) 72%, rgba(0,0,0,0.5) 84%, rgba(0,0,0,0.18) 94%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 52%, rgba(0,0,0,0.97) 62%, rgba(0,0,0,0.82) 72%, rgba(0,0,0,0.5) 84%, rgba(0,0,0,0.18) 94%, transparent 100%)'
                 }}
             />
             <div
                 className="hero-transition-blend"
                 aria-hidden
                 style={{
-                    height: '90px',
-                    marginTop: '-90px',
-                    background: 'linear-gradient(to bottom, rgba(250, 243, 224, 0) 0%, rgba(250, 243, 224, 0.7) 55%, var(--bg) 100%)',
+                    height: '140px',
+                    marginTop: '-140px',
+                    background: 'linear-gradient(to bottom, rgba(250, 243, 224, 0) 0%, rgba(250, 243, 224, 0.12) 22%, rgba(250, 243, 224, 0.38) 48%, rgba(250, 243, 224, 0.72) 72%, var(--bg) 100%)',
                     pointerEvents: 'none'
                 }}
             />
@@ -222,7 +222,7 @@ const Hero = () => {
                             min-height: 100svh !important;
                         }
                         .hero-top-image { min-height: 34svh !important; }
-                        .hero-transition-blend { height: 64px !important; margin-top: -64px !important; }
+                        .hero-transition-blend { height: 100px !important; margin-top: -100px !important; }
                         #hero-content { padding: 14px 5% 18px !important; }
                         .hero-ring-wrap { margin-bottom: 0.6rem !important; transform: scale(0.88); }
                         .hero-blessing { font-size: 0.85rem !important; margin-bottom: 0.4rem !important; }
