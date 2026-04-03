@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Ethiopic:wght@400;500;600&family=Noto+Serif+Ethiopic:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
     --primary: #5C4033;
@@ -38,6 +38,50 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+html.lang-am body,
+html.lang-am h1,
+html.lang-am h2,
+html.lang-am h3,
+html.lang-am h4,
+html.lang-am .font-serif {
+    font-family: 'Noto Sans Ethiopic', 'Montserrat', sans-serif;
+    letter-spacing: 0;
+}
+
+/* Slightly smaller type for Amharic (Ethiopic reads large at same px as Latin) */
+html.lang-am body {
+    font-size: clamp(13.5px, 1.45vw, 15.5px);
+}
+
+.font-ethiopic {
+    font-family: 'Noto Sans Ethiopic', 'Montserrat', sans-serif;
+}
+
+/* Amharic hero names: serif Ethiopic for a clearer, more formal look */
+html.lang-am .hero-names-am {
+    font-family: 'Noto Serif Ethiopic', 'Noto Sans Ethiopic', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    font-size: clamp(1.65rem, 6.4vw, 3.75rem);
+    -webkit-font-smoothing: antialiased;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* English hero names: 3 rows, script-style */
+html:not(.lang-am) .hero-names-en {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Allura', 'Great Vibes', 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    font-size: clamp(2rem, 7.5vw, 4.5rem);
 }
 
 body {

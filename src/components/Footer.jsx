@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+    const { lang, t } = useLanguage();
+    const isAm = lang === 'am';
+
     return (
         <footer style={{
             background: 'var(--primary)',
@@ -15,9 +19,14 @@ const Footer = () => {
                 transition={{ duration: 0.8 }}
             >
                 <div style={{ marginBottom: '3rem' }}>
-                    <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--gold-light)' }}>
-                        Photo Sharing & Livestream
+                    <h3 className={`font-serif ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--gold-light)' }}>
+                        {t('footer.title')}
                     </h3>
+                    {t('footer.tagline') ? (
+                        <p className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '0.95rem', color: 'var(--gold-light)', opacity: 0.95, marginBottom: '1rem', lineHeight: 1.5 }}>
+                            {t('footer.tagline')}
+                        </p>
+                    ) : null}
                     <div style={{
                         display: 'inline-block',
                         padding: '10px',
@@ -34,8 +43,10 @@ const Footer = () => {
                             />
                         </a>
                     </div>
-                    <p style={{ fontSize: '0.9rem', opacity: 0.8, letterSpacing: '0.5px' }}>
-                        Scan or <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>click here</a> to join our Telegram channel
+                    <p className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '0.9rem', opacity: 0.8, letterSpacing: isAm ? '0' : '0.5px', lineHeight: 1.7, maxWidth: '640px', margin: '0 auto' }}>
+                        {t('footer.scanLine')}
+                        <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>{t('footer.clickHere')}</a>
+                        {' '}{t('footer.joinTelegram')}
                     </p>
                 </div>
 
@@ -43,11 +54,11 @@ const Footer = () => {
                     paddingTop: '2rem',
                     borderTop: '1px solid rgba(250, 243, 224, 0.1)',
                     fontSize: '0.8rem',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
+                    letterSpacing: isAm ? '0' : '2px',
+                    textTransform: isAm ? 'none' : 'uppercase',
                     opacity: 0.6
-                }}>
-                    Tesfatsion & Dibora • 2026
+                }} className={isAm ? 'font-ethiopic' : ''}>
+                    {t('footer.closing')}
                 </div>
             </motion.div>
         </footer>

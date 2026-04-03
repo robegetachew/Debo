@@ -1,18 +1,21 @@
 import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../i18n/translations';
 
 const SaveTheDate = () => {
-    const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const { lang, t } = useLanguage();
+    const st = translations[lang].saveTheDate;
+    const daysOfWeek = st.weekdays;
     const daysInMay = Array.from({ length: 31 }, (_, i) => i + 1);
-    const startDayOffset = 5; // May 1, 2026 is a Friday (5)
+    const startDayOffset = 5;
 
     const addToCalendar = () => {
         const event = {
-            title: "Tesfatsion & Dibora's Wedding",
+            title: st.calendarTitle,
             start: '20260503T080000Z',
             end: '20260504T010000Z',
-            location: 'Adama Bethel MKC Church & Kereyou Resort',
-            details: 'Celebrate the union of marriage with us.'
+            location: st.calendarLocation,
+            details: st.calendarDetails
         };
 
         const params = new URLSearchParams({
@@ -35,9 +38,8 @@ const SaveTheDate = () => {
                 viewport={{ once: true }}
                 className="container save-date-container"
             >
-                <h2 className="save-date-title" style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontFamily: '"Great Vibes", "Playfair Display", serif', fontWeight: '400', letterSpacing: '0.01em' }}>Save the Date</h2>
+                <h2 className={`save-date-title ${lang === 'am' ? 'font-ethiopic' : ''}`} style={{ fontSize: 'clamp(2rem, 5.4vw, 3rem)', marginBottom: '1.5rem', color: 'var(--primary)', fontFamily: lang === 'am' ? 'inherit' : '"Great Vibes", "Playfair Display", serif', fontWeight: '400', letterSpacing: '0.01em' }}>{t('saveTheDate.title')}</h2>
 
-                {/* Calendar Card */}
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -71,7 +73,7 @@ const SaveTheDate = () => {
                     />
                     <div style={{ position: 'relative', zIndex: 1 }}>
                         <div style={{ marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
-                            <h3 className="font-serif" style={{ fontSize: 'clamp(1.4rem, 4.4vw, 1.8rem)', color: 'var(--primary)' }}>May 2026</h3>
+                            <h3 className={`font-serif ${lang === 'am' ? 'font-ethiopic' : ''}`} style={{ fontSize: 'clamp(1.4rem, 4.4vw, 1.8rem)', color: 'var(--primary)' }}>{t('saveTheDate.monthYear')}</h3>
                         </div>
 
                         <div style={{
@@ -84,7 +86,6 @@ const SaveTheDate = () => {
                                 <div key={i} style={{ fontWeight: '600', color: 'var(--secondary)', marginBottom: '10px' }}>{day}</div>
                             ))}
 
-                            {/* Empty cells for offset */}
                             {Array.from({ length: startDayOffset }).map((_, i) => (
                                 <div key={`empty-${i}`}></div>
                             ))}
@@ -153,17 +154,17 @@ const SaveTheDate = () => {
                     </div>
                 </motion.div>
 
-                <p className="save-date-description" style={{ maxWidth: '560px', margin: '0 auto 2.2rem', color: 'var(--text-light)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
-                    Please reserve this special day and celebrate with us as we begin our new life together in Christ.
+                <p className={`save-date-description ${lang === 'am' ? 'font-ethiopic' : ''}`} style={{ maxWidth: '560px', margin: '0 auto 2.2rem', color: 'var(--text-light)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
+                    {t('saveTheDate.description')}
                 </p>
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn-primary"
+                    className={`btn-primary ${lang === 'am' ? 'font-ethiopic' : ''}`}
                     onClick={addToCalendar}
                 >
-                    Add to Calendar
+                    {t('saveTheDate.addToCalendar')}
                 </motion.button>
             </motion.div>
             <style dangerouslySetInnerHTML={{

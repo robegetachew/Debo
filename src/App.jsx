@@ -9,11 +9,13 @@ import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
 import ScrollEffects from './components/ScrollEffects';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import Admin from './pages/Admin';
 import './styles/globals.css';
 
 const Invitation = () => (
   <>
+    <LanguageSwitcher />
     <ScrollEffects />
     <ScrollReveal><Hero /></ScrollReveal>
     <ScrollReveal><SaveTheDate /></ScrollReveal>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Circle, Gem } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const renderAnimatedLetters = (text, startDelay = 0, stagger = 0.02, color) =>
     Array.from(text).map((char, index) => (
@@ -19,6 +20,8 @@ const renderAnimatedLetters = (text, startDelay = 0, stagger = 0.02, color) =>
     ));
 
 const Hero = () => {
+    const { lang, t } = useLanguage();
+    const isAm = lang === 'am';
     const targetDate = '2026-05-03T00:00:00';
 
     const calculateTimeLeft = () => {
@@ -43,6 +46,8 @@ const Hero = () => {
         }, 1000);
         return () => clearInterval(timer);
     }, []);
+
+    const countdownUnits = ['days', 'hours', 'minutes', 'seconds'];
 
     return (
         <section className="hero" style={{
@@ -117,28 +122,105 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                <p className="italic hero-blessing" style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
-                    {renderAnimatedLetters('By the Grace of God', 0.22, 0.018)}
-                    <br />
-                    {renderAnimatedLetters('and with the blessing of our families', 0.6, 0.014)}
-                </p>
+                {(t('hero.blessingLine1') || t('hero.blessingLine2')) && (
+                    <p className={`italic hero-blessing ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.2rem)', color: 'var(--primary-light)', marginBottom: '0.8rem' }}>
+                        {isAm ? (
+                            <>
+                                <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}>{t('hero.blessingLine1')}</motion.span>
+                                <br />
+                                <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45, duration: 0.5 }}>{t('hero.blessingLine2')}</motion.span>
+                            </>
+                        ) : (
+                            <>
+                                {renderAnimatedLetters(t('hero.blessingLine1'), 0.22, 0.018)}
+                                <br />
+                                {renderAnimatedLetters(t('hero.blessingLine2'), 0.6, 0.014)}
+                            </>
+                        )}
+                    </p>
+                )}
 
-                <h1 className="hero-names" style={{ fontSize: 'clamp(2.2rem, 9vw, 5rem)', margin: '0.7rem 0', fontWeight: '400', color: 'var(--text)', fontFamily: '"Allura", "Great Vibes", "Playfair Display", serif', letterSpacing: '0.01em' }}>
-                    <span className="hero-name-part">{renderAnimatedLetters('Tesfatsion', 0.95, 0.045)}</span>{' '}
-                    <span className="hero-name-amp" style={{ color: 'var(--gold)' }}>{renderAnimatedLetters('&', 1.46, 0.02, 'var(--gold)')}</span>{' '}
-                    <span className="hero-name-part">{renderAnimatedLetters('Dibora', 1.55, 0.05)}</span>
+                <h1
+                    className={`hero-names ${isAm ? 'hero-names-am' : 'hero-names-en'}`}
+                    style={{
+                        margin: '0.7rem 0',
+                        fontWeight: isAm ? 600 : 400,
+                        color: 'var(--text)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexWrap: 'nowrap',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: isAm ? '0.12em' : '0.06em',
+                        textAlign: 'center'
+                    }}
+                >
+                    <motion.span
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        style={{ display: 'block', width: '100%', lineHeight: 1.2 }}
+                    >
+                        {t('hero.name1')}
+                    </motion.span>
+                    <motion.span
+                        className="hero-name-amp"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.58, duration: 0.5 }}
+                        style={{
+                            display: 'block',
+                            width: '100%',
+                            color: 'var(--gold)',
+                            fontWeight: isAm ? 700 : 500,
+                            lineHeight: 1.1,
+                            fontSize: isAm ? undefined : 'clamp(2rem, 8vw, 3.2rem)'
+                        }}
+                    >
+                        {t('hero.nameJoin')}
+                    </motion.span>
+                    <motion.span
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.66, duration: 0.5 }}
+                        style={{ display: 'block', width: '100%', lineHeight: 1.2 }}
+                    >
+                        {t('hero.name2')}
+                    </motion.span>
                 </h1>
 
-                <p className="hero-invite" style={{ fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)', maxWidth: '1100px', margin: '0 auto 1.25rem', color: 'var(--text-light)', whiteSpace: 'nowrap' }}>
-                    {renderAnimatedLetters('Joyfully invite you to witness and celebrate the union of our marriage', 1.95, 0.011)}
+                <p
+                    className={`hero-invite ${isAm ? 'font-ethiopic' : ''}`}
+                    style={{
+                        fontSize: 'clamp(0.95rem, 3.6vw, 1.1rem)',
+                        maxWidth: '1100px',
+                        margin: '0 auto 1.25rem',
+                        color: 'var(--text-light)',
+                        whiteSpace: isAm ? 'normal' : 'nowrap',
+                        lineHeight: isAm ? 1.75 : undefined
+                    }}
+                >
+                    {isAm ? (
+                        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85, duration: 0.6 }}>{t('hero.invite')}</motion.span>
+                    ) : (
+                        renderAnimatedLetters(t('hero.invite'), 1.95, 0.011)
+                    )}
                 </p>
 
                 <div className="hero-date-block" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
-                    <p className="font-serif hero-date" style={{ fontSize: '1.5rem', fontWeight: '500' }}>
-                        {renderAnimatedLetters('Sunday, May 3, 2026', 2.72, 0.022)}
+                    <p className={`font-serif hero-date ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '1.5rem', fontWeight: '500' }}>
+                        {isAm ? (
+                            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.5 }}>{t('hero.date')}</motion.span>
+                        ) : (
+                            renderAnimatedLetters(t('hero.date'), 2.72, 0.022)
+                        )}
                     </p>
-                    <p className="hero-location" style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
-                        {renderAnimatedLetters('Adama Bethel MKC Church', 3.14, 0.018)}
+                    <p className={`hero-location ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '1rem', color: 'var(--text-light)' }}>
+                        {isAm ? (
+                            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1, duration: 0.5 }}>{t('hero.location')}</motion.span>
+                        ) : (
+                            renderAnimatedLetters(t('hero.location'), 3.14, 0.018)
+                        )}
                     </p>
                 </div>
 
@@ -150,7 +232,7 @@ const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2, duration: 1 }}
-                        className="hero-quote font-serif"
+                        className={`hero-quote font-serif ${isAm ? 'font-ethiopic' : ''}`}
                         style={{
                             fontStyle: 'italic',
                             fontSize: 'clamp(1.15rem, 4.2vw, 1.45rem)',
@@ -160,8 +242,8 @@ const Hero = () => {
                             fontWeight: '400'
                         }}
                     >
-                        “What God has joined together, let no one separate.” <br />
-                        <span style={{ fontSize: '0.85em', opacity: 0.85, marginTop: '0.6rem', display: 'block', fontStyle: 'normal', color: 'var(--primary-light)' }}>— Mark 10:9</span>
+                        {t('hero.quote')} <br />
+                        <span style={{ fontSize: '0.85em', opacity: 0.85, marginTop: '0.6rem', display: 'block', fontStyle: 'normal', color: 'var(--primary-light)' }}>{t('hero.quoteRef')}</span>
                     </motion.p>
                     <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--gold), transparent)', marginTop: '1.2rem', opacity: 0.35 }} />
                 </div>
@@ -170,7 +252,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.45, duration: 0.6 }}
-                    className="hero-counter"
+                    className={`hero-counter ${isAm ? 'font-ethiopic' : ''}`}
                     style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
@@ -201,13 +283,13 @@ const Hero = () => {
                         }}
                     />
                     <div style={{ position: 'relative', zIndex: 1, display: 'contents' }}>
-                        {['days', 'hours', 'minutes', 'seconds'].map((unit) => (
+                        {countdownUnits.map((unit) => (
                             <div key={unit} style={{ textAlign: 'center' }}>
                                 <div style={{ fontSize: '1.35rem', fontWeight: 600, color: 'var(--primary)', lineHeight: 1.1 }}>
                                     {timeLeft[unit]}
                                 </div>
-                                <div style={{ fontSize: '0.66rem', textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--text-light)' }}>
-                                    {unit}
+                                <div style={{ fontSize: isAm ? '0.62rem' : '0.66rem', textTransform: isAm ? 'none' : 'uppercase', letterSpacing: isAm ? '0' : '0.8px', color: 'var(--text-light)' }}>
+                                    {t(`hero.countdown.${unit}`)}
                                 </div>
                             </div>
                         ))}
@@ -228,11 +310,26 @@ const Hero = () => {
                         .hero-blessing { font-size: 0.85rem !important; margin-bottom: 0.4rem !important; }
                         .hero-names {
                             display: flex;
-                            flex-direction: column;
+                            flex-direction: column !important;
                             align-items: center;
                             gap: 0.1rem;
                             font-size: clamp(1.8rem, 8.2vw, 2.35rem) !important;
                             margin: 0.3rem 0 !important;
+                        }
+                        .hero-names.hero-names-am {
+                            flex-direction: column !important;
+                            flex-wrap: nowrap !important;
+                            align-items: center !important;
+                            gap: 0.1rem !important;
+                            font-size: clamp(1.4rem, 6vw, 2rem) !important;
+                        }
+                        .hero-names.hero-names-en {
+                            flex-direction: column !important;
+                            font-size: clamp(1.7rem, 7vw, 2.35rem) !important;
+                            gap: 0.05rem !important;
+                        }
+                        .hero-names.hero-names-en .hero-name-amp {
+                            font-size: clamp(1.85rem, 7.5vw, 2.5rem) !important;
                         }
                         .hero-name-part,
                         .hero-name-amp {

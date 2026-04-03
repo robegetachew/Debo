@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Users, Check, MessageSquareHeart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const RSVP = () => {
+    const { lang, t } = useLanguage();
+    const isAm = lang === 'am';
+
     const [formData, setFormData] = useState({
-        names: [''], // Array of names
+        names: [''],
         attending: 'yes',
         guests: 1,
         message: ''
@@ -18,7 +22,6 @@ const RSVP = () => {
     const [status, setStatus] = useState('');
 
     const handleGuestChange = (rawValue) => {
-        // Allow temporary empty value so users can replace "1" with another number naturally.
         if (rawValue === '') {
             setGuestsInput('');
             return;
@@ -61,13 +64,12 @@ const RSVP = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    name: formData.names.join(', ') // Combine multiple names for the backend
+                    name: formData.names.join(', ')
                 })
             });
 
             if (response.ok) {
                 setSubmitted(true);
-                // Reset form
                 setFormData({
                     names: [''],
                     guests: 1,
@@ -76,10 +78,10 @@ const RSVP = () => {
                 });
                 setGuestsInput('1');
             } else {
-                setStatus('Something went wrong. Please try again.');
+                setStatus(t('rsvp.errorGeneric'));
             }
         } catch (error) {
-            setStatus('Connection error. Please try again later.');
+            setStatus(t('rsvp.errorConnection'));
         } finally {
             setLoading(false);
         }
@@ -104,7 +106,7 @@ const RSVP = () => {
         fontSize: '0.9rem',
         color: 'var(--primary)',
         fontWeight: '600',
-        letterSpacing: '0.5px'
+        letterSpacing: isAm ? '0' : '0.5px'
     };
 
     const InputField = ({ label, icon: Icon, children, margin = '25px' }) => (
@@ -150,6 +152,8 @@ const RSVP = () => {
         color: active ? 'var(--primary)' : 'var(--text-light)'
     });
 
+    const thankLines = t('rsvp.thankBody').split('\n');
+
     return (
         <section id="rsvp" className="rsvp" style={{ background: 'var(--bg)', padding: 'var(--section-padding)' }}>
             <div className="container" style={{ maxWidth: '750px' }}>
@@ -176,36 +180,36 @@ const RSVP = () => {
                         }}>
                             <MessageSquareHeart size={28} style={{ color: 'var(--gold)' }} />
                         </div>
-                        <h2 className="font-serif" style={{ fontSize: '2.4rem', color: 'var(--primary)', marginBottom: '10px' }}>
-                            Join Our <span style={{ color: 'var(--gold)' }}>Celebration</span>
+                        <h2 className={`font-serif ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '2.4rem', color: 'var(--primary)', marginBottom: '10px' }}>
+                            {t('rsvp.title')} <span style={{ color: 'var(--gold)' }}>{t('rsvp.titleAccent')}</span>
                         </h2>
-                        <p style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '1.1rem' }}>
-                            Your presence is the greatest gift. Please RSVP by confirming below.
+                        <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '1.1rem' }}>
+                            {t('rsvp.subtitle')}
                         </p>
                     </div>
 
                     {!submitted ? (
                         <form onSubmit={handleSubmit}>
-                            {/* Attendance */}
-                            <label style={labelStyle}>Will you attend?</label>
+                            <label style={labelStyle}>{t('rsvp.willAttend')}</label>
                             <div style={checkboxGroupStyle}>
                                 <div
                                     style={checkboxStyle(formData.attending === 'yes')}
+                                    className={isAm ? 'font-ethiopic' : ''}
                                     onClick={() => setFormData({ ...formData, attending: 'yes' })}
                                 >
                                     <Check size={20} style={{ opacity: formData.attending === 'yes' ? 1 : 0 }} />
-                                    Yes
+                                    {t('rsvp.yes')}
                                 </div>
                                 <div
                                     style={checkboxStyle(formData.attending === 'no')}
+                                    className={isAm ? 'font-ethiopic' : ''}
                                     onClick={() => setFormData({ ...formData, attending: 'no' })}
                                 >
-                                    No
+                                    {t('rsvp.no')}
                                 </div>
                             </div>
 
-                            {/* Guests Count */}
-                            <InputField label="Number of Guests" icon={Users}>
+                            <InputField label={t('rsvp.numGuests')} icon={Users}>
                                 <input
                                     type="number"
                                     min="1"
@@ -222,9 +226,8 @@ const RSVP = () => {
                                 />
                             </InputField>
 
-                            {/* Dynamic Name Fields */}
                             <div style={{ marginBottom: '30px' }}>
-                                <label style={labelStyle}>Guest Name(s)</label>
+                                <label style={labelStyle}>{t('rsvp.guestNames')}</label>
                                 <AnimatePresence mode="popLayout">
                                     {formData.names.map((name, index) => (
                                         <motion.div
@@ -248,8 +251,9 @@ const RSVP = () => {
                                             />
                                             <input
                                                 type="text"
-                                                placeholder={`Full Name of Guest ${index + 1}`}
+                                                placeholder={t('rsvp.guestPlaceholder', index + 1)}
                                                 value={name}
+                                                className={isAm ? 'font-ethiopic' : ''}
                                                 style={inputStyle}
                                                 onChange={(e) => handleNameChange(index, e.target.value)}
                                             />
@@ -258,23 +262,23 @@ const RSVP = () => {
                                 </AnimatePresence>
                             </div>
 
-                            {/* Message / Blessing */}
                             <div style={{ marginBottom: '40px' }}>
-                                <label style={labelStyle}>Message / Blessing</label>
+                                <label style={labelStyle}>{t('rsvp.message')}</label>
                                 <textarea
                                     rows="5"
-                                    placeholder="Write your heartfelt message here..."
+                                    placeholder={t('rsvp.messagePlaceholder')}
+                                    className={isAm ? 'font-ethiopic' : ''}
                                     style={{ ...inputStyle, padding: '16px', height: '140px', resize: 'none' }}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 ></textarea>
                             </div>
 
-                            {status && <p style={{ color: '#d32f2f', textAlign: 'center', marginBottom: '20px', fontSize: '0.9rem' }}>{status}</p>}
+                            {status && <p className={isAm ? 'font-ethiopic' : ''} style={{ color: '#d32f2f', textAlign: 'center', marginBottom: '20px', fontSize: '0.9rem' }}>{status}</p>}
 
                             <motion.button
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="btn-primary"
+                                className={`btn-primary ${isAm ? 'font-ethiopic' : ''}`}
                                 type="submit"
                                 disabled={loading}
                                 style={{
@@ -287,11 +291,11 @@ const RSVP = () => {
                                 }}
                             >
                                 {loading ? (
-                                    'Sending...'
+                                    t('rsvp.sending')
                                 ) : (
                                     <>
                                         <Send size={20} />
-                                        Send RSVP
+                                        {t('rsvp.submit')}
                                     </>
                                 )}
                             </motion.button>
@@ -322,10 +326,14 @@ const RSVP = () => {
                             }}>
                                 <Check size={40} />
                             </div>
-                            <h3 style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '15px' }}>Thank You!</h3>
-                            <p style={{ color: 'var(--text-light)', fontSize: '1.2rem', lineHeight: '1.6' }}>
-                                Your blessing and confirmation have been received. <br />
-                                We are so honored to have you with us.
+                            <h3 className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '15px' }}>{t('rsvp.thankYou')}</h3>
+                            <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                                {thankLines.map((line, i) => (
+                                    <span key={i}>
+                                        {line}
+                                        {i < thankLines.length - 1 && <br />}
+                                    </span>
+                                ))}
                             </p>
                         </motion.div>
                     )}

@@ -1,34 +1,30 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../i18n/translations';
+
+const IMAGE_SRCS = [
+    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2070&auto=format&fit=crop'
+];
 
 const Gallery = () => {
-    const images = [
-        {
-            src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop',
-            caption: 'The Beginning of Forever'
-        },
-        {
-            src: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=2070&auto=format&fit=crop',
-            caption: 'Pure Radiance'
-        },
-        {
-            src: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop',
-            caption: 'In Union'
-        },
-        {
-            src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop',
-            caption: 'Sacred Moments'
-        },
-        {
-            src: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
-            caption: 'Laughter & Love'
-        },
-        {
-            src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2070&auto=format&fit=crop',
-            caption: 'A Journey of Faith'
-        }
-    ];
+    const { lang, t } = useLanguage();
+    const isAm = lang === 'am';
+
+    const images = useMemo(
+        () =>
+            IMAGE_SRCS.map((src, i) => ({
+                src,
+                caption: translations[lang].gallery.captions[i]
+            })),
+        [lang]
+    );
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
@@ -109,7 +105,7 @@ const Gallery = () => {
                     </motion.div>
 
                     <h2
-                        className="font-serif gallery-title"
+                        className={`font-serif gallery-title ${isAm ? 'font-ethiopic' : ''}`}
                         style={{
                             fontSize: 'clamp(2rem, 6vw, 3.8rem)',
                             color: 'var(--primary)',
@@ -117,9 +113,9 @@ const Gallery = () => {
                             lineHeight: 1
                         }}
                     >
-                        Moments of{' '}
-                        <span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 400 }}>
-                            Love & Grace
+                        {t('gallery.title')}{' '}
+                        <span style={{ color: 'var(--gold)', fontStyle: isAm ? 'normal' : 'italic', fontWeight: 400 }}>
+                            {t('gallery.titleAccent')}
                         </span>
                     </h2>
                 </div>
@@ -177,7 +173,7 @@ const Gallery = () => {
                                 padding: '40px'
                             }}>
                                 <motion.h4
-                                    className="font-serif"
+                                    className={`font-serif ${isAm ? 'font-ethiopic' : ''}`}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     style={{ color: 'white', fontSize: '1.5rem', fontWeight: 400 }}
