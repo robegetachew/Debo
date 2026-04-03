@@ -185,7 +185,7 @@ export const translations = {
             thankBody: 'መልዕክትዎ እና ማረጋገጫዎ ተቀብለናል።\nከእኛ ጋር እንዲሆኑ እናመሰግናለን።'
         },
         footer: {
-            title: 'የፎቶ ማጋራት እና ቀጥታ ስርጭት',
+            title: 'ፎቶ ማጋራት እና ቀጥታ ስርጭት',
             tagline: '',
             scanLine: 'ይህንን QR Code ስካን አድርገው ወይም ',
             clickHere: 'ይህንን ሊንክ',
