@@ -7,9 +7,9 @@ const LanguageSwitcher = () => {
         <nav
             aria-label="Language"
             style={{
-                position: 'fixed',
-                top: 'max(14px, env(safe-area-inset-top))',
-                right: 'max(14px, env(safe-area-inset-right))',
+                position: 'absolute',
+                top: 'max(26px, calc(12px + env(safe-area-inset-top)))',
+                right: 'max(16px, env(safe-area-inset-right))',
                 zIndex: 2000,
                 display: 'flex',
                 alignItems: 'center',
@@ -35,11 +35,13 @@ const LanguageSwitcher = () => {
             <span
                 aria-hidden
                 style={{
-                    width: '1px',
+                    width: '2px',
                     alignSelf: 'stretch',
-                    minHeight: '20px',
-                    margin: '6px 0',
-                    background: 'linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.55), transparent)',
+                    minHeight: '22px',
+                    margin: '4px 6px',
+                    borderRadius: '1px',
+                    background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.35), var(--gold) 45%, var(--gold) 55%, rgba(212, 175, 55, 0.35))',
+                    boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.25)',
                     flexShrink: 0
                 }}
             />
