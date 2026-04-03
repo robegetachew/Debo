@@ -154,18 +154,28 @@ const SaveTheDate = () => {
                     </div>
                 </motion.div>
 
-                <p className={`save-date-description ${lang === 'am' ? 'font-ethiopic' : ''}`} style={{ maxWidth: '560px', margin: '0 auto 2.2rem', color: 'var(--text-light)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
-                    {t('saveTheDate.description')}
-                </p>
-
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`btn-primary ${lang === 'am' ? 'font-ethiopic' : ''}`}
-                    onClick={addToCalendar}
+                <div
+                    className="save-date-bottom"
+                    style={{
+                        paddingLeft: 'clamp(18px, 5vw, 40px)',
+                        paddingRight: 'clamp(18px, 5vw, 40px)',
+                        maxWidth: '640px',
+                        margin: '0 auto'
+                    }}
                 >
-                    {t('saveTheDate.addToCalendar')}
-                </motion.button>
+                    <p className={`save-date-description ${lang === 'am' ? 'font-ethiopic' : ''}`} style={{ maxWidth: '560px', margin: '0 auto 2.2rem', color: 'var(--text-light)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)' }}>
+                        {t('saveTheDate.description')}
+                    </p>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`btn-primary ${lang === 'am' ? 'font-ethiopic' : ''}`}
+                        onClick={addToCalendar}
+                    >
+                        {t('saveTheDate.addToCalendar')}
+                    </motion.button>
+                </div>
             </motion.div>
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -186,6 +196,10 @@ const SaveTheDate = () => {
                         .save-date-title { font-size: 1.9rem !important; }
                         .save-date-title { margin-bottom: 2rem !important; }
                         .save-date-description { font-size: 0.92rem !important; line-height: 1.7 !important; }
+                        .save-date-bottom {
+                            padding-left: clamp(20px, 6vw, 32px) !important;
+                            padding-right: clamp(20px, 6vw, 32px) !important;
+                        }
                     }
                 `
             }} />
