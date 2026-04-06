@@ -11,7 +11,7 @@ export const translations = {
       blessingLine1: "By the Grace of God",
       blessingLine2: "and with the blessing of our families",
       invite:
-        "Joyfully invite you to witness and celebrate the union of our marriage",
+        "Request the honor of your presence to witness and celebrate our union in marriage.",
       date: "Sunday, May 3, 2026",
       location: "Adama Bethel MKC Church",
       quote:
