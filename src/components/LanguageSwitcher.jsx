@@ -27,8 +27,8 @@ const LanguageSwitcher = () => {
                 style={{
                     border: 'none',
                     background: 'transparent',
-                    padding: '10px 34px 10px 12px',
-                    minWidth: '88px',
+                    padding: '7px 12px 7px 10px',
+                    minWidth: '60px',
                     fontSize: '0.8rem',
                     fontWeight: 600,
                     letterSpacing: '0.04em',
