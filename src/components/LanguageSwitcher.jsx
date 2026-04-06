@@ -4,18 +4,14 @@ const LanguageSwitcher = () => {
     const { lang, setLang } = useLanguage();
 
     return (
-        <nav
-            aria-label="Language"
+        <div
+            aria-label="Language selector"
             style={{
                 position: 'absolute',
                 top: 'max(26px, calc(12px + env(safe-area-inset-top)))',
-                left: 'max(16px, env(safe-area-inset-left))',
+                right: 'max(16px, env(safe-area-inset-right))',
                 zIndex: 2000,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0,
-                padding: '4px',
-                borderRadius: '100px',
+                borderRadius: '12px',
                 background: 'rgba(255, 255, 255, 0.78)',
                 border: '1px solid rgba(212, 175, 55, 0.28)',
                 boxShadow: '0 4px 24px rgba(62, 39, 35, 0.07)',
@@ -23,71 +19,56 @@ const LanguageSwitcher = () => {
                 WebkitBackdropFilter: 'blur(10px)'
             }}
         >
-            <button
-                type="button"
-                aria-pressed={lang === 'en'}
-                aria-label="English"
-                onClick={() => setLang('en')}
-                style={btn(lang === 'en')}
+            <select
+                aria-label="Language"
+                value={lang}
+                onChange={(e) => setLang(e.target.value)}
+                className={lang === 'am' ? 'font-ethiopic' : ''}
+                style={{
+                    border: 'none',
+                    background: 'transparent',
+                    padding: '10px 34px 10px 12px',
+                    minWidth: '88px',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    color: '#4a3328',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    outline: 'none',
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                }}
             >
-                Eng
-            </button>
+                <option value="en">Eng</option>
+                <option value="am">አማ</option>
+            </select>
             <span
                 aria-hidden
                 style={{
-                    width: '2px',
-                    alignSelf: 'stretch',
-                    minHeight: '22px',
-                    margin: '4px 6px',
-                    borderRadius: '1px',
-                    background: 'linear-gradient(180deg, rgba(212, 175, 55, 0.35), var(--gold) 45%, var(--gold) 55%, rgba(212, 175, 55, 0.35))',
-                    boxShadow: '0 0 0 1px rgba(212, 175, 55, 0.25)',
-                    flexShrink: 0
+                    position: 'absolute',
+                    right: '12px',
+                    top: '50%',
+                    width: 0,
+                    height: 0,
+                    borderLeft: '5px solid transparent',
+                    borderRight: '5px solid transparent',
+                    borderTop: '6px solid rgba(92, 64, 51, 0.85)',
+                    transform: 'translateY(-20%)',
+                    pointerEvents: 'none'
                 }}
             />
-            <button
-                type="button"
-                aria-pressed={lang === 'am'}
-                aria-label="አማርኛ"
-                onClick={() => setLang('am')}
-                className="font-ethiopic"
-                style={btn(lang === 'am')}
-            >
-                አማ
-            </button>
             <style dangerouslySetInnerHTML={{
                 __html: `
-                    nav[aria-label="Language"] button:focus-visible {
+                    [aria-label="Language selector"] select:focus-visible {
                         outline: none;
-                        box-shadow: inset 0 0 0 2px rgba(212, 175, 55, 0.55);
-                        border-radius: 100px;
-                    }
-                    nav[aria-label="Language"] button:hover {
-                        color: #4a3429 !important;
+                        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.55);
                     }
                 `
             }} />
-        </nav>
+        </div>
     );
 };
-
-function btn(active) {
-    return {
-        border: 'none',
-        background: active ? 'rgba(92, 64, 51, 0.1)' : 'transparent',
-        padding: '10px 16px',
-        minWidth: '48px',
-        fontSize: '0.78rem',
-        fontWeight: active ? 600 : 500,
-        letterSpacing: '0.06em',
-        fontFamily: 'inherit',
-        color: active ? '#4a3328' : '#7d6358',
-        cursor: 'pointer',
-        borderRadius: '100px',
-        transition: 'color 0.2s ease, background 0.2s ease',
-        lineHeight: 1.2,
-        WebkitFontSmoothing: 'antialiased'
-    };
-}
 
 export default LanguageSwitcher;
