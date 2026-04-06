@@ -1,197 +1,221 @@
 /** @typedef {'en' | 'am'} Lang */
 
 export const translations = {
-    en: {
-        langName: 'Eng',
-        hero: {
-            name1: 'Tesfatsion Melis',
-            name2: 'Dibora Endale',
-            nameAmp: '&',
-            nameJoin: '&',
-            blessingLine1: 'By the Grace of God',
-            blessingLine2: 'and with the blessing of our families',
-            invite:
-                'Joyfully invite you to witness and celebrate the union of our marriage',
-            date: 'Sunday, May 3, 2026',
-            location: 'Adama Bethel MKC Church',
-            quote: '“Blessed be the LORD, that hath given rest unto his people Israel, according to all that he promised”',
-            quoteRef: '— 1 Kings 8፥56',
-            countdown: { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds' }
-        },
-        saveTheDate: {
-            title: 'Save the Date',
-            monthYear: 'May 2026',
-            description:
-                'Please mark this special day on your calander to celebrate with us as we begin our new life together in Christ.',
-            addToCalendar: 'Add to Calendar',
-            calendarTitle: "Tesfatsion & Dibora's Wedding",
-            calendarDetails: 'Celebrate the union of marriage with us.',
-            calendarLocation: 'Adama Bethel MKC Church & Kereyou Resort',
-            weekdays: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-        },
-        story: {
-            title: 'Our Story',
-            p1: "Our story is a living testimony of God's faithfulness, written not by chance, but by His perfect will. What began as a quiet prayer and a simple desire to seek Him first gently unfolded into a love we never could have created on our own. Step by step, through surrender, patience, and trust, He led us to each other and now into this beautiful covenant of marriage.",
-            p2: "As we begin this new chapter, we choose every day to build a life with God at the very center. A life where love is nurtured, grace is given, and purpose is pursued together. Hand in hand, we will walk this journey not just for ourselves, but to fulfill His eternal purpose on earth.",
-            p3: "We are not here only because we fell in love, but because we trusted the One who wrote our story. This love is not sustained by our own strength, but by God, because it is all in Him, through Him, and for Him. With hearts full of gratitude, we give all the glory to God who made this possible."
-        },
-        program: {
-            title: 'Wedding Program',
-            items: [
-                { time: '4:00 PM – 6:00 PM', text: 'Guests gather separately at the Bride’s and Groom’s family homes' },
-                { time: '6:00 PM – 7:00 PM', text: 'Groom proceeds to the Bride’s home' },
-                { time: '7:00 PM – 8:00 PM', text: 'Departure to Adama Bethel MKC Church' },
-                { time: '8:00 PM – 10:00 PM', text: 'Vow Ceremony & Worship Service' },
-                { time: '10:00 PM – 10:30 PM', text: 'Transfer to Kereyou Resort' },
-                { time: '11:00 PM – 1:00 AM', text: 'Cake Ceremony, Photoshoot & Worship' },
-                { time: '1:00 AM', text: 'Closing of the Ceremony' }
-            ]
-        },
-        venues: {
-            title: 'Location Details',
-            items: [
-                { title: "Bride's House", mapLabel: "Open Bride's House on map" },
-                { title: "Groom's House", mapLabel: "Open Groom's House on map" },
-                { title: 'The Church', mapLabel: 'Open church on map' },
-                { title: 'The Reception', mapLabel: 'Open reception on map' }
-            ]
-        },
-        gallery: {
-            title: 'Moments of',
-            titleAccent: 'Love & Grace',
-            captions: [
-                'Laughter & Love',
-                'A Journey of Faith',
-                'Pure Radiance',
-                'Sacred Moments',
-                'The Beginning of Forever',
-                'In Union'
-            ]
-        },
-        rsvp: {
-            title: 'Join Our',
-            titleAccent: 'Celebration',
-            subtitle: 'Your presence is the greatest gift. Please RSVP by confirming below.',
-            willAttend: 'Will you attend?',
-            yes: 'Yes',
-            no: 'No',
-            numGuests: 'Number of Guests',
-            guestNames: 'Guest Name(s)',
-            guestPlaceholder: (n) => `Full Name of Guest ${n}`,
-            message: 'Message / Blessing',
-            messagePlaceholder: 'Write your heartfelt message here...',
-            sending: 'Sending...',
-            submit: 'Send RSVP',
-            errorGeneric: 'Something went wrong. Please try again.',
-            errorConnection: 'Connection error. Please try again later.',
-            thankYou: 'Thank You!',
-            thankBody:
-                'Your blessing and confirmation have been received.\nWe are so honored to have you with us.'
-        },
-        footer: {
-            title: 'Photo Sharing & Livestream',
-            tagline: '',
-            scanLine: 'Kindly scan the QR code or ',
-            clickHere: 'click the link',
-            joinTelegram:
-                'to share the photos and videos you capture on our wedding day. We would be delighted! If you are unable to join us in person, you may use the link above to watch the ceremony live.',
-            closing: 'Tesfatsion & Dibora • 2026'
-        }
+  en: {
+    langName: "Eng",
+    hero: {
+      name1: "Tesfatsion Melis",
+      name2: "Dibora Endale",
+      nameAmp: "&",
+      nameJoin: "&",
+      blessingLine1: "By the Grace of God",
+      blessingLine2: "and with the blessing of our families",
+      invite:
+        "Joyfully invite you to witness and celebrate the union of our marriage",
+      date: "Sunday, May 3, 2026",
+      location: "Adama Bethel MKC Church",
+      quote:
+        "“Blessed be the LORD, that hath given rest unto his people Israel, according to all that he promised”",
+      quoteRef: "— 1 Kings 8፥56",
+      countdown: {
+        days: "days",
+        hours: "hours",
+        minutes: "minutes",
+        seconds: "seconds",
+      },
     },
-    am: {
-        langName: 'አማ',
-        hero: {
-            name1: 'ተስፋፂዮን መልስ',
-            name2: 'ዲቦራ እንዳለ',
-            nameAmp: '',
-            nameJoin: 'እና',
-            blessingLine1: '',
-            blessingLine2: '',
-            invite:
-                'የማክበር ሰላምታችን እያቀረብን ከቀኑ 9 ሰዓት በምናደርገው የቃልኪዳን ሥነ-ሥርዓት ላይ ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተንዎታል።',
-            date: 'እሁድ ሚያዚያ 25፣ 2018 ዓ.ም',
-            location: 'አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን',
-            quote: '“እንደ ተናገረው ተስፋ ሁሉ ለሕዝቡ ለእስራኤል ዕረፍትን የሰጠ እግዚአብሔር ይመስገን ”',
-            quoteRef: '— 1ኛ ነገሥት 8፥56',
-            countdown: { days: 'ቀናት', hours: 'ሰዓት', minutes: 'ደቂቃ', seconds: 'ሰከንድ' }
+    saveTheDate: {
+      title: "Save the Date",
+      monthYear: "May 2026",
+      description:
+        "Please mark this special day on your calander to celebrate with us as we begin our new life together in Christ.",
+      addToCalendar: "Add to Calendar",
+      calendarTitle: "Tesfatsion & Dibora's Wedding",
+      calendarDetails: "Celebrate the union of marriage with us.",
+      calendarLocation: "Adama Bethel MKC Church & Kereyou Resort",
+      weekdays: ["S", "M", "T", "W", "T", "F", "S"],
+    },
+    story: {
+      title: "Our Story",
+      p1: "Our story is a living testimony of God's faithfulness, written not by chance, but by His perfect will. What began as a quiet prayer and a simple desire to seek Him first gently unfolded into a love we never could have created on our own. Step by step, through surrender, patience, and trust, He led us to each other and now into this beautiful covenant of marriage.",
+      p2: "As we begin this new chapter, we choose every day to build a life with God at the very center. A life where love is nurtured, grace is given, and purpose is pursued together. Hand in hand, we will walk this journey not just for ourselves, but to fulfill His eternal purpose on earth.",
+      p3: "We are not here only because we fell in love, but because we trusted the One who wrote our story. This love is not sustained by our own strength, but by God, because it is all in Him, through Him, and for Him. With hearts full of gratitude, we give all the glory to God who made this possible.",
+    },
+    program: {
+      title: "Wedding Program",
+      items: [
+        {
+          time: "11:00 AM – 1:00 PM",
+          text: "Guests gather separately at the Bride’s and Groom’s family homes",
         },
-        saveTheDate: {
-            title: 'ቀኑን እንዳይረሱ',
-            monthYear: 'ሚያዝያ 2018',
-            description:
-                'ይህንን ልዩ ቀን ከእኛ ጋር ለማክበር ማስታወሻ እንዲሆኖት የቀን መቁጠሪያዎት ላይ ያካትቱት።',
-            addToCalendar: 'ወደ ቀን መቁጠሪያ',
-            calendarTitle: 'የተስፋፂዮን መልስ እና የዲቦራ እንዳለ ሠርግ',
-            calendarDetails: 'ከእኛ ጋር በክርስቶስ የትዳር በአላችንን ያክብሩ።',
-            calendarLocation: 'አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን እና ከረዩ ሪዞርት',
-            weekdays: ['እ', 'ሰ', 'ማ', 'ረ', 'ሐ', 'አ', 'ቅ']
+        {
+          time: "1:00 PM – 2:00 PM",
+          text: "Groom proceeds to the Bride’s home",
         },
-        story: {
-            title: 'ስለ እኛ',
-            p1: 'ታሪካችን የእግዚአብሔር ታማኝነት እና ቃል አክባሪነት ማሳያ ነው። የእግዚአብሔርን ፈቃድ በመጠየቅ የጀመርነው የፍቅር ግንኙነት በፀሎት፣ እርስ በርስ በመቀባበል እንዲሁም በእግዚአብሔር ላይ በመታመን ለትዳር በቅቷል። በቀሪ የሕይወት ዘመናችን እግዚአብሔርን ማዕከላዊ ባደረገ ትዳር አንዳችን ለአንዳችን በመኖር ፤ የእግዚአብሔርን ዘላለማዊ ሐሳብ በምድር ለመፈጸም በአብሮነት እንተጋለን።',
-            p2: 'ወደዚህ የትዳር ሕይወት የምንገባው በፍቅር ብቻ ሳይሆን ይህንን መንገድ ባስጀመረን በእርሱ ላይ ባለን ድፍረት ጭምር ነው። የእኛ የፍቅር ጉዞ በጥረታችን ለዚህ ቀን የበቃ ሳይሆን ሁሉ በእርሱ፣ ለእርሱ፣ ከእርሱ ስለሆነ ብቻ ነው።',
-            p3: 'ይህንን ላደረገ ለአምላካችን ለእግዚአብሔር ክብር ይሁን።'
+        {
+          time: "2:00 PM – 3:00 PM",
+          text: "Departure to Adama Bethel MKC Church",
         },
-        program: {
-            title: 'የሠርግ ፕሮግራም',
-            items: [
-                { time: '4:00 PM – 6:00 PM', text: 'አጃቢዎች በሙሽራው ወይም በሙሽሪት መኖሪያ ቤት' },
-                { time: '6:00 PM – 7:00 PM', text: 'የሙሽራው አጃቢዎች ጉዞ ወደ ሙሽሪት መኖሪያ ቤት' },
-                { time: '7:00 PM – 8:00 PM', text: 'ጉዞ ወደ አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን' },
-                { time: '8:00 PM – 10:00 PM', text: 'የአምልኮ እና የቃልኪዳን ሥነሥርዓት' },
-                { time: '10:00 PM – 10:30 PM', text: 'ጉዞ ወደ ከረዩ ሪዞርት' },
-                { time: '11:00 PM – 1:00 AM', text: 'የፎቶ እና የኬክ ፕሮግራም' },
-                { time: '1:00 AM', text: 'የፕሮግራም ማጠቃለያ' }
-            ]
+        { time: "3:00 PM – 5:00 PM", text: "Vow Ceremony & Worship Service" },
+        { time: "5:00 PM – 5:30 PM", text: "Transfer to Kereyou Resort" },
+        {
+          time: "5:30 PM – 8:00 PM",
+          text: "Cake Ceremony, Photo shoot & Worship",
         },
-        venues: {
-            title: 'አድራሻ',
-            items: [
-                { title: 'የሙሽራው መኖሪያ ቤት', mapLabel: 'ካርታ ላይ የሙሽራ ቤት ይክፈቱ' },
-                { title: 'የሙሽሪት መኖሪያ ቤት', mapLabel: 'ካርታ ላይ የሙሽሪት ቤት ይክፈቱ' },
-                { title: 'አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን', mapLabel: 'ቤተክርስትያን በካርታ ይክፈቱ' },
-                { title: 'ከረዩ ሪዞርት', mapLabel: 'ከረዩ ሪዞርት በካርታ ይክፈቱ' }
-            ]
+        { time: "8:00 PM", text: "Closing of the Ceremony" },
+      ],
+    },
+    venues: {
+      title: "Location Details",
+      items: [
+        { title: "Bride's House", mapLabel: "Open Bride's House on map" },
+        { title: "Groom's House", mapLabel: "Open Groom's House on map" },
+        { title: "The Church", mapLabel: "Open church on map" },
+        { title: "The Reception", mapLabel: "Open reception on map" },
+      ],
+    },
+    gallery: {
+      title: "Moments of",
+      titleAccent: "Love & Grace",
+      captions: [
+        "Laughter & Love",
+        "A Journey of Faith",
+        "Pure Radiance",
+        "Sacred Moments",
+        "The Beginning of Forever",
+        "In Union",
+      ],
+    },
+    rsvp: {
+      title: "Join Our",
+      titleAccent: "Celebration",
+      subtitle:
+        "Your presence is the greatest gift. Please RSVP by confirming below.",
+      willAttend: "Will you attend?",
+      yes: "Yes",
+      no: "No",
+      numGuests: "Number of Guests",
+      guestNames: "Guest Name(s)",
+      guestPlaceholder: (n) => `Full Name of Guest ${n}`,
+      message: "Message / Blessing",
+      messagePlaceholder: "Write your heartfelt message here...",
+      sending: "Sending...",
+      submit: "Send RSVP",
+      errorGeneric: "Something went wrong. Please try again.",
+      errorConnection: "Connection error. Please try again later.",
+      thankYou: "Thank You!",
+      thankBody:
+        "Your blessing and confirmation have been received.\nWe are so honored to have you with us.",
+    },
+    footer: {
+      title: "Photo Sharing & Livestream",
+      tagline: "",
+      scanLine: "Kindly scan the QR code or ",
+      clickHere: "click the link",
+      joinTelegram:
+        "to share the photos and videos you capture on our wedding day. We would be delighted! If you are unable to join us in person, you may use the link above to watch the ceremony live.",
+      closing: "Tesfatsion & Dibora • 2026",
+    },
+  },
+  am: {
+    langName: "አማ",
+    hero: {
+      name1: "ተስፋፂዮን መልስ",
+      name2: "ዲቦራ እንዳለ",
+      nameAmp: "",
+      nameJoin: "እና",
+      blessingLine1: "",
+      blessingLine2: "",
+      invite:
+        "የማክበር ሰላምታችን እያቀረብን ከቀኑ 9 ሰዓት በምናደርገው የቃልኪዳን ሥነ-ሥርዓት ላይ ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተንዎታል።",
+      date: "እሁድ ሚያዚያ 25፣ 2018 ዓ.ም",
+      location: "አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
+      quote: "“እንደ ተናገረው ተስፋ ሁሉ ለሕዝቡ ለእስራኤል ዕረፍትን የሰጠ እግዚአብሔር ይመስገን ”",
+      quoteRef: "— 1ኛ ነገሥት 8፥56",
+      countdown: { days: "ቀናት", hours: "ሰዓት", minutes: "ደቂቃ", seconds: "ሰከንድ" },
+    },
+    saveTheDate: {
+      title: "ቀኑን እንዳይረሱ",
+      monthYear: "ሚያዚያ 2018",
+      description: "ይህንን ልዩ ቀን ከእኛ ጋር ለማክበር ማስታወሻ እንዲሆኖት የቀን መቁጠሪያዎት ላይ ያካትቱት።",
+      addToCalendar: "ወደ ቀን መቁጠሪያ",
+      calendarTitle: "የተስፋፂዮን መልስ እና የዲቦራ እንዳለ ሠርግ",
+      calendarDetails: "ከእኛ ጋር በክርስቶስ የትዳር በአላችንን ያክብሩ።",
+      calendarLocation: "አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን እና ከረዩ ሪዞርት",
+      weekdays: ["እ", "ሰ", "ማ", "ረ", "ሐ", "አ", "ቅ"],
+    },
+    story: {
+      title: "ስለ እኛ",
+      p1: "ታሪካችን የእግዚአብሔር ታማኝነት እና ቃል አክባሪነት ማሳያ ነው። የእግዚአብሔርን ፈቃድ በመጠየቅ የጀመርነው የፍቅር ግንኙነት በፀሎት፣ እርስ በርስ በመቀባበል እንዲሁም በእግዚአብሔር ላይ በመታመን ለትዳር በቅቷል። በቀሪ የሕይወት ዘመናችን እግዚአብሔርን ማዕከላዊ ባደረገ ትዳር አንዳችን ለአንዳችን በመኖር ፤ የእግዚአብሔርን ዘላለማዊ ሐሳብ በምድር ለመፈጸም በአብሮነት እንተጋለን።",
+      p2: "ወደዚህ የትዳር ሕይወት የምንገባው በፍቅር ብቻ ሳይሆን ይህንን መንገድ ባስጀመረን በእርሱ ላይ ባለን ድፍረት ጭምር ነው። የእኛ የፍቅር ጉዞ በጥረታችን ለዚህ ቀን የበቃ ሳይሆን ሁሉ በእርሱ፣ ለእርሱ፣ ከእርሱ ስለሆነ ብቻ ነው።",
+      p3: "ይህንን ላደረገ ለአምላካችን ለእግዚአብሔር ክብር ይሁን።",
+    },
+    program: {
+      title: "የሠርግ ፕሮግራም",
+      items: [
+        { time: "ጠዋት 5:00 – 7:00", text: "አጃቢዎች በሙሽራው ወይም በሙሽሪት መኖሪያ ቤት" },
+        { time: "ከሰዓት 7:00 – 8:00", text: "የሙሽራው አጃቢዎች ጉዞ ወደ ሙሽሪት መኖሪያ ቤት" },
+        {
+          time: "ከሰዓት 8:00 – 9:00",
+          text: "ጉዞ ወደ አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
         },
-        gallery: {
-            title: 'የፍቅር እና የጸጋ',
-            titleAccent: 'ጊዜያት',
-            captions: [
-                'ሳቅ እና ፍቅር',
-                'የእምነት ጉዞ',
-                'የንጹህ ብርሃን',
-                'ቅዱስ ጊዜያት',
-                'የዘላለም መጀመሪያ',
-                'በአንድነት'
-            ]
+        { time: "ከሰዓት 9:00 – 11:00", text: "የአምልኮ እና የቃልኪዳን ሥነሥርዓት" },
+        { time: "ከሰዓት 11:00 – 11:30", text: "ጉዞ ወደ ከረዩ ሪዞርት" },
+        { time: "ከሰዓት 11:30 – 2:00", text: "የፎቶ እና የኬክ ፕሮግራም" },
+        { time: "ማታ 2:00", text: "የፕሮግራም ማጠቃለያ" },
+      ],
+    },
+    venues: {
+      title: "አድራሻ",
+      items: [
+        { title: "የሙሽራው መኖሪያ ቤት", mapLabel: "ካርታ ላይ የሙሽራ ቤት ይክፈቱ" },
+        { title: "የሙሽሪት መኖሪያ ቤት", mapLabel: "ካርታ ላይ የሙሽሪት ቤት ይክፈቱ" },
+        {
+          title: "አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
+          mapLabel: "ቤተክርስትያን በካርታ ይክፈቱ",
         },
-        rsvp: {
-            title: 'የደስታችን',
-            titleAccent: 'ተካፋይ ሁኑልን!',
-            subtitle: 'የእናንተ መገኘት ለእኛ ትልቅ ትርጉም አለው!',
-            willAttend: 'ሠርጋችን ላይ መገኘት ይችላሉ?',
-            yes: 'አዎ',
-            no: 'አይ',
-            numGuests: 'የእንግዳ ብዛት ቁጥር',
-            guestNames: 'የእንግዳ ስም',
-            guestPlaceholder: (n) => `የእንግዳ ${n} ሙሉ ስም`,
-            message: 'ለሙሽራው እና ለሙሽሪት መልዕክት',
-            messagePlaceholder: 'ከልብዎ የመጣ መልዕክትዎን እዚህ ይጻፉ...',
-            sending: 'በመላክ ላይ...',
-            submit: 'ይላኩ',
-            errorGeneric: 'ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።',
-            errorConnection: 'ግንኙነት አልተሳካም። ቆይተው ይሞክሩ።',
-            thankYou: 'እናመሰግናለን!',
-            thankBody: 'መልዕክትዎ እና ማረጋገጫዎ ተቀብለናል።\nከእኛ ጋር እንዲሆኑ እናመሰግናለን።'
-        },
-        footer: {
-            title: 'ፎቶ ማጋራት እና ቀጥታ ስርጭት',
-            tagline: '',
-            scanLine: 'ይህንን QR Code ስካን አድርገው ወይም ',
-            clickHere: 'ይህንን ሊንክ',
-            joinTelegram:
-                'ተጭነው በሠርጋችን ዕለት የሚያነሷቸውን ፎቶዎች እና ቪዲዮዎች ቢያጋሩን ደስ ይለናል! መገኘት የማይችሉ ከሆነ ከላይ የተቀመጠውን ሊንክ በመጠቀም የቃልኪዳን ሥነ-ሥርዓቱን በቀጥታ ሥርጭት መከታተል ይችላሉ።',
-            closing: 'ተስፋፂዮን መልስ እና ዲቦራ እንዳለ • 2018 ዓ.ም'
-        }
-    }
+        { title: "ከረዩ ሪዞርት", mapLabel: "ከረዩ ሪዞርት በካርታ ይክፈቱ" },
+      ],
+    },
+    gallery: {
+      title: "የፍቅር እና የጸጋ",
+      titleAccent: "ጊዜያት",
+      captions: [
+        "ሳቅ እና ፍቅር",
+        "የእምነት ጉዞ",
+        "የንጹህ ብርሃን",
+        "ቅዱስ ጊዜያት",
+        "የዘላለም መጀመሪያ",
+        "በአንድነት",
+      ],
+    },
+    rsvp: {
+      title: "የደስታችን",
+      titleAccent: "ተካፋይ ሁኑልን!",
+      subtitle: "የእናንተ መገኘት ለእኛ ትልቅ ትርጉም አለው!",
+      willAttend: "ሠርጋችን ላይ መገኘት ይችላሉ?",
+      yes: "አዎ",
+      no: "አይ",
+      numGuests: "የእንግዳ ብዛት ቁጥር",
+      guestNames: "የእንግዳ ስም",
+      guestPlaceholder: (n) => `የእንግዳ ${n} ሙሉ ስም`,
+      message: "ለሙሽራው እና ለሙሽሪት መልዕክት",
+      messagePlaceholder: "ከልብዎ የመጣ መልዕክትዎን እዚህ ይጻፉ...",
+      sending: "በመላክ ላይ...",
+      submit: "ይላኩ",
+      errorGeneric: "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
+      errorConnection: "ግንኙነት አልተሳካም። ቆይተው ይሞክሩ።",
+      thankYou: "እናመሰግናለን!",
+      thankBody: "መልዕክትዎ እና ማረጋገጫዎ ተቀብለናል።\nከእኛ ጋር እንዲሆኑ እናመሰግናለን።",
+    },
+    footer: {
+      title: "ፎቶ ማጋራት እና ቀጥታ ስርጭት",
+      tagline: "",
+      scanLine: "ይህንን QR Code ስካን አድርገው ወይም ",
+      clickHere: "ይህንን ሊንክ",
+      joinTelegram:
+        "ተጭነው በሠርጋችን ዕለት የሚያነሷቸውን ፎቶዎች እና ቪዲዮዎች ቢያጋሩን ደስ ይለናል! መገኘት የማይችሉ ከሆነ ከላይ የተቀመጠውን ሊንክ በመጠቀም የቃልኪዳን ሥነ-ሥርዓቱን በቀጥታ ሥርጭት መከታተል ይችላሉ።",
+      closing: "ተስፋፂዮን መልስ እና ዲቦራ እንዳለ • 2018 ዓ.ም",
+    },
+  },
 };
