@@ -9,7 +9,7 @@ const LanguageSwitcher = () => {
             style={{
                 position: 'absolute',
                 top: 'max(26px, calc(12px + env(safe-area-inset-top)))',
-                right: 'max(16px, env(safe-area-inset-right))',
+                left: 'max(16px, env(safe-area-inset-left))',
                 zIndex: 2000,
                 display: 'flex',
                 alignItems: 'center',

@@ -14,8 +14,8 @@ export const translations = {
                 'Joyfully invite you to witness and celebrate the union of our marriage',
             date: 'Sunday, May 3, 2026',
             location: 'Adama Bethel MKC Church',
-            quote: '“What God has joined together, let no one separate.”',
-            quoteRef: '— Mark 10:9',
+            quote: '“Blessed be the LORD, that hath given rest unto his people Israel, according to all that he promised”',
+            quoteRef: '— 1 Kings 8፥56',
             countdown: { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds' }
         },
         saveTheDate: {
@@ -60,12 +60,12 @@ export const translations = {
             title: 'Moments of',
             titleAccent: 'Love & Grace',
             captions: [
-                'The Beginning of Forever',
-                'Pure Radiance',
-                'In Union',
-                'Sacred Moments',
                 'Laughter & Love',
-                'A Journey of Faith'
+                'A Journey of Faith',
+                'Pure Radiance',
+                'Sacred Moments',
+                'The Beginning of Forever',
+                'In Union'
             ]
         },
         rsvp: {
@@ -111,8 +111,8 @@ export const translations = {
                 'የማክበር ሰላምታችን እያቀረብን ከቀኑ 9 ሰዓት በምናደርገው የቃልኪዳን ሥነ-ሥርዓት ላይ ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተንዎታል።',
             date: 'እሁድ ሚያዚያ 25፣ 2018 ዓ.ም',
             location: 'አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን',
-            quote: '«እግዚአብሔር ያጣመረውን እንግዲህ ሰው አይለይ»',
-            quoteRef: '— ማርቆስ 10:9',
+            quote: '“እንደ ተናገረው ተስፋ ሁሉ ለሕዝቡ ለእስራኤል ዕረፍትን የሰጠ እግዚአብሔር ይመስገን ”',
+            quoteRef: '— 1ኛ ነገሥት 8፥56',
             countdown: { days: 'ቀናት', hours: 'ሰዓት', minutes: 'ደቂቃ', seconds: 'ሰከንድ' }
         },
         saveTheDate: {
@@ -157,12 +157,12 @@ export const translations = {
             title: 'የፍቅር እና የጸጋ',
             titleAccent: 'ጊዜያት',
             captions: [
-                'የዘላለም መጀመሪያ',
-                'የንጹህ ብርሃን',
-                'በአንድነት',
-                'ቅዱስ ጊዜያት',
                 'ሳቅ እና ፍቅር',
-                'የእምነት ጉዞ'
+                'የእምነት ጉዞ',
+                'የንጹህ ብርሃን',
+                'ቅዱስ ጊዜያት',
+                'የዘላለም መጀመሪያ',
+                'በአንድነት'
             ]
         },
         rsvp: {

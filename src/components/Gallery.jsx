@@ -4,15 +4,15 @@ import { Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
-/** Per-slide object-position so portrait photos do not crop faces under object-fit: cover */
+/** Order: 1869, 1857, middle (1855, 1864), then 1846, 1858, 1856. Per-slide object-position for cover crop. */
 const GALLERY_IMAGES = [
-    { src: '/IMG_1846.JPG', objectPosition: 'center 75%' },
-    { src: '/IMG_1855.JPG', objectPosition: 'center 35%' },
-    { src: '/IMG_1856.JPG', objectPosition: 'center 52%' },
-    { src: '/IMG_1864.JPG', objectPosition: 'center 47%' },
     { src: '/IMG_1869.JPG', objectPosition: 'center 68%' },
-    { src: '/IMG_1857.JPG', objectPosition: 'center 74%' }
-
+    { src: '/IMG_1857.JPG', objectPosition: 'center 74%' },
+    { src: '/IMG_1855.JPG', objectPosition: 'center 35%' },
+    { src: '/IMG_1864.JPG', objectPosition: 'center 47%' },
+    { src: '/IMG_1846.JPG', objectPosition: 'center 75%' },
+    { src: '/IMG_1858.JPG', objectPosition: 'center 50%' },
+    { src: '/IMG_1856.JPG', objectPosition: 'center 52%' }
 ];
 
 const Gallery = () => {
