@@ -131,7 +131,7 @@ const SaveTheDate = () => {
                                                     d="M50 85 C20 65, 5 45, 5 25 A20 20 0 0 1 45 25 A20 20 0 0 1 85 25 C85 45, 70 65, 50 85"
                                                     fill="transparent"
                                                     stroke="var(--gold)"
-                                                    strokeWidth="4"
+                                                    strokeWidth="6"
                                                     strokeLinecap="round"
                                                     initial={{ pathLength: 0, opacity: 0 }}
                                                     whileInView={{ pathLength: 1, opacity: 1 }}
