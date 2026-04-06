@@ -53,7 +53,7 @@ const SaveTheDate = () => {
                         padding: '2.5rem',
                         borderRadius: '16px',
                         border: '1px solid rgba(92, 64, 51, 0.15)',
-                        background: 'rgba(255, 255, 255, 0.48)',
+                        background: 'rgba(255, 255, 255, 0.32)',
                         boxShadow: '0 20px 40px rgba(62, 39, 35, 0.08)',
                         position: 'relative',
                         overflow: 'hidden'
@@ -64,10 +64,10 @@ const SaveTheDate = () => {
                         style={{
                             position: 'absolute',
                             inset: 0,
-                            background: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop") center/cover no-repeat',
+                            background: 'url("/IMG_1860.JPG") center/cover no-repeat',
                             filter: 'blur(0px)',
                             transform: 'scale(1.1)',
-                            opacity: 0.26,
+                            opacity: 0.4,
                             zIndex: 0
                         }}
                     />

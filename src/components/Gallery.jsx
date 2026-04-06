@@ -4,13 +4,15 @@ import { Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
-const IMAGE_SRCS = [
-    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2070&auto=format&fit=crop'
+/** Per-slide object-position so portrait photos do not crop faces under object-fit: cover */
+const GALLERY_IMAGES = [
+    { src: '/IMG_1846.JPG', objectPosition: 'center 75%' },
+    { src: '/IMG_1855.JPG', objectPosition: 'center 35%' },
+    { src: '/IMG_1856.JPG', objectPosition: 'center 52%' },
+    { src: '/IMG_1864.JPG', objectPosition: 'center 47%' },
+    { src: '/IMG_1869.JPG', objectPosition: 'center 68%' },
+    { src: '/IMG_1857.JPG', objectPosition: 'center 74%' }
+
 ];
 
 const Gallery = () => {
@@ -19,9 +21,10 @@ const Gallery = () => {
 
     const images = useMemo(
         () =>
-            IMAGE_SRCS.map((src, i) => ({
-                src,
-                caption: translations[lang].gallery.captions[i]
+            GALLERY_IMAGES.map((item, i) => ({
+                src: item.src,
+                objectPosition: item.objectPosition,
+                // caption: translations[lang].gallery.captions[i]
             })),
         [lang]
     );
@@ -161,6 +164,7 @@ const Gallery = () => {
                                     width: '100%',
                                     height: '100%',
                                     objectFit: 'cover',
+                                    objectPosition: images[currentIndex].objectPosition,
                                     pointerEvents: 'none'
                                 }}
                             />

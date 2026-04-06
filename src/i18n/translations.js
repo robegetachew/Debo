@@ -22,7 +22,7 @@ export const translations = {
             title: 'Save the Date',
             monthYear: 'May 2026',
             description:
-                'Please reserve this special day and celebrate with us as we begin our new life together in Christ.',
+                'Please mark this special day on your calander to celebrate with us as we begin our new life together in Christ.',
             addToCalendar: 'Add to Calendar',
             calendarTitle: "Tesfatsion & Dibora's Wedding",
             calendarDetails: 'Celebrate the union of marriage with us.',
@@ -31,9 +31,9 @@ export const translations = {
         },
         story: {
             title: 'Our Story',
-            p1: "Our story is a testimony of God's faithfulness and the beauty of a promise kept. What began as a simple connection grew into a journey built on trust, prayer, and integrity.",
-            p2: "With God at the center, we have held onto His word and to each other with sincerity and purpose. Now we are going to step into this covenant of marriage, not only in love, but in the strength of promises we are committed to keep for a lifetime.",
-            p3: "This love is not our doing, but God's only, to Him alone be all the glory."
+            p1: "Our story is a living testimony of God's faithfulness, written not by chance, but by His perfect will. What began as a quiet prayer and a simple desire to seek Him first gently unfolded into a love we never could have created on our own. Step by step, through surrender, patience, and trust, He led us to each other and now into this beautiful covenant of marriage.",
+            p2: "As we begin this new chapter, we choose every day to build a life with God at the very center. A life where love is nurtured, grace is given, and purpose is pursued together. Hand in hand, we will walk this journey not just for ourselves, but to fulfill His eternal purpose on earth.",
+            p3: "We are not here only because we fell in love, but because we trusted the One who wrote our story. This love is not sustained by our own strength, but by God, because it is all in Him, through Him, and for Him. With hearts full of gratitude, we give all the glory to God who made this possible."
         },
         program: {
             title: 'Wedding Program',

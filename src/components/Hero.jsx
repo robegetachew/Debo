@@ -65,13 +65,29 @@ const Hero = () => {
             <div
                 className="hero-top-image"
                 style={{
+                    position: 'relative',
                     width: '100%',
+                    height: '58svh',
                     minHeight: '52svh',
-                    background: 'url("https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1974&auto=format&fit=crop") center/cover no-repeat',
+                    overflow: 'hidden',
                     maskImage: 'linear-gradient(to bottom, black 0%, black 52%, rgba(0,0,0,0.97) 62%, rgba(0,0,0,0.82) 72%, rgba(0,0,0,0.5) 84%, rgba(0,0,0,0.18) 94%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 52%, rgba(0,0,0,0.97) 62%, rgba(0,0,0,0.82) 72%, rgba(0,0,0,0.5) 84%, rgba(0,0,0,0.18) 94%, transparent 100%)'
                 }}
-            />
+            >
+                <img
+                    src="/IMG_1842.JPG"
+                    alt=""
+                    className="hero-top-image-img"
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center 28%'
+                    }}
+                />
+            </div>
             <div
                 className="hero-transition-blend"
                 aria-hidden
@@ -276,7 +292,7 @@ const Hero = () => {
                         style={{
                             position: 'absolute',
                             inset: 0,
-                            background: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop") center/cover no-repeat',
+                            // background: 'url("/IMG_1857.JPG") center/cover no-repeat',
                             opacity: 0.26,
                             filter: 'blur(1px)',
                             transform: 'scale(1.05)',
@@ -306,7 +322,10 @@ const Hero = () => {
                         .hero {
                             min-height: 100svh !important;
                         }
-                        .hero-top-image { min-height: 34svh !important; }
+                        .hero-top-image {
+                            min-height: 34svh !important;
+                            height: 42svh !important;
+                        }
                         .hero-transition-blend { height: 100px !important; margin-top: -100px !important; }
                         #hero-content { padding: 14px 5% 18px !important; }
                         .hero-ring-wrap { margin-bottom: 0.6rem !important; transform: scale(0.88); }
