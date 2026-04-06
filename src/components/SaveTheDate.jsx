@@ -8,6 +8,7 @@ const SaveTheDate = () => {
     const daysOfWeek = st.weekdays;
     const daysInMay = Array.from({ length: 31 }, (_, i) => i + 1);
     const startDayOffset = 5;
+    const highlightedDay = lang === 'am' ? 25 : 3;
 
     const addToCalendar = () => {
         const event = {
@@ -102,7 +103,7 @@ const SaveTheDate = () => {
                                         alignItems: 'center'
                                     }}
                                 >
-                                    {day === 3 && (
+                                    {day === highlightedDay && (
                                         <motion.div
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             whileInView={{ opacity: 1, scale: 1 }}
@@ -141,10 +142,10 @@ const SaveTheDate = () => {
                                         </motion.div>
                                     )}
                                     <span style={{
-                                        fontWeight: day === 3 ? '700' : '400',
+                                        fontWeight: day === highlightedDay ? '700' : '400',
                                         zIndex: 2,
-                                        fontSize: day === 3 ? '1.1rem' : '0.9rem',
-                                        color: day === 3 ? 'var(--primary)' : 'inherit'
+                                        fontSize: day === highlightedDay ? '1.1rem' : '0.9rem',
+                                        color: day === highlightedDay ? 'var(--primary)' : 'inherit'
                                     }}>
                                         {day}
                                     </span>

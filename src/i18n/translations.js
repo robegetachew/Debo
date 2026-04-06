@@ -117,7 +117,7 @@ export const translations = {
         },
         saveTheDate: {
             title: 'ቀኑን እንዳይረሱ',
-            monthYear: 'ግንቦት 2018',
+            monthYear: 'ሚያዝያ 2018',
             description:
                 'ይህንን ልዩ ቀን ከእኛ ጋር ለማክበር ማስታወሻ እንዲሆኖት የቀን መቁጠሪያዎት ላይ ያካትቱት።',
             addToCalendar: 'ወደ ቀን መቁጠሪያ',
