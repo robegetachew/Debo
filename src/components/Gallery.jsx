@@ -11,7 +11,7 @@ const GALLERY_IMAGES = [
     { src: '/IMG_1855.JPG', objectPosition: 'center 35%' },
     { src: '/IMG_1864.JPG', objectPosition: 'center 47%' },
     { src: '/IMG_1846.JPG', objectPosition: 'center 75%' },
-    { src: '/IMG_1858.JPG', objectPosition: 'center 50%' },
+    { src: '/IMG_1858.JPG', objectPosition: 'center 81%' },
     { src: '/IMG_1856.JPG', objectPosition: 'center 52%' }
 ];
 
