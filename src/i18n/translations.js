@@ -4,7 +4,7 @@ export const translations = {
   en: {
     langName: "Eng",
     hero: {
-      name1: "Tesfatsion Melis",
+      name1: "Tesfatsion Melese",
       name2: "Dibora Endale",
       nameAmp: "&",
       nameJoin: "&",
@@ -120,14 +120,14 @@ export const translations = {
   am: {
     langName: "አማ",
     hero: {
-      name1: "ተስፋፂዮን መልስ",
+      name1: "ተስፋፂዮን መለሰ",
       name2: "ዲቦራ እንዳለ",
       nameAmp: "",
       nameJoin: "እና",
       blessingLine1: "",
       blessingLine2: "",
       invite:
-        "የማክበር ሰላምታችን እያቀረብን ከቀኑ 9 ሰዓት በምናደርገው የቃልኪዳን ሥነ-ሥርዓት ላይ ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተንዎታል።",
+        "የማክበር ሰላምታችን እያቀረብን ከቀኑ 9 ሰዓት በምናደርገው የቃልኪዳን ሥነ-ሥርዓት ላይ ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በአክብሮት ጠርተንዎታል።",
       date: "እሁድ ሚያዚያ 25፣ 2018 ዓ.ም",
       location: "አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
       quote: "“እንደ ተናገረው ተስፋ ሁሉ ለሕዝቡ ለእስራኤል ዕረፍትን የሰጠ እግዚአብሔር ይመስገን ”",
