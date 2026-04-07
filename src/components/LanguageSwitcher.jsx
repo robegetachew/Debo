@@ -7,8 +7,8 @@ const LanguageSwitcher = () => {
         <div
             aria-label="Language selector"
             style={{
-                position: 'absolute',
-                top: 'max(26px, calc(12px + env(safe-area-inset-top)))',
+                position: 'fixed',
+                top: 'max(24px, calc(8px + env(safe-area-inset-top)))',
                 right: 'max(16px, env(safe-area-inset-right))',
                 zIndex: 2000,
                 borderRadius: '12px',
