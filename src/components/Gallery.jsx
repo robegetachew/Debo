@@ -54,7 +54,7 @@ const Gallery = () => {
                 }
                 return prev + 1;
             });
-        }, 60); // ~6 seconds per slide
+        }, 30); // ~4 seconds per slide
         return () => clearInterval(interval);
     }, [nextSlide]);
 

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Circle, Gem } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import LanguageSwitcher from './LanguageSwitcher';
 
 const renderAnimatedLetters = (text, startDelay = 0, stagger = 0.02, color) =>
     Array.from(text).map((char, index) => (
@@ -313,8 +312,6 @@ const Hero = () => {
                     </div>
                 </motion.div>
             </motion.div>
-
-            <LanguageSwitcher />
 
             <style dangerouslySetInnerHTML={{
                 __html: `

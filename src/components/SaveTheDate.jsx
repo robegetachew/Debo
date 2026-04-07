@@ -6,8 +6,9 @@ const SaveTheDate = () => {
     const { lang, t } = useLanguage();
     const st = translations[lang].saveTheDate;
     const daysOfWeek = st.weekdays;
-    const daysInMay = Array.from({ length: 31 }, (_, i) => i + 1);
-    const startDayOffset = 5;
+    const totalDaysInMonth = lang === 'am' ? 30 : 31;
+    const daysInMonth = Array.from({ length: totalDaysInMonth }, (_, i) => i + 1);
+    const startDayOffset = lang === 'am' ? 4 : 5;
     const highlightedDay = lang === 'am' ? 25 : 3;
 
     const addToCalendar = () => {
@@ -91,7 +92,7 @@ const SaveTheDate = () => {
                                 <div key={`empty-${i}`}></div>
                             ))}
 
-                            {daysInMay.map((day) => (
+                            {daysInMonth.map((day) => (
                                 <div
                                     key={day}
                                     style={{

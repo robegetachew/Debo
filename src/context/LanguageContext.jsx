@@ -52,7 +52,7 @@ export function LanguageProvider({ children }) {
 
     useEffect(() => {
         const base = 'Tesfatsion & Dibora | Wedding Invitation';
-        const am = 'ተስፋፂዮን መልስ እና ዲቦራ እንዳለ | የሠርግ ግብዣ';
+        const am = 'ተስፋፂዮን እና ዲቦራ | የሠርግ ግብዣ';
         document.title = lang === 'am' ? am : base;
     }, [lang]);
 
