@@ -4,7 +4,7 @@ export const translations = {
   en: {
     langName: "Eng",
     hero: {
-      name1: "Tesfatsion Melese",
+      name1: "Tesfatsion Melese (Abu)",
       name2: "Dibora Endale",
       nameAmp: "&",
       nameJoin: "&",
@@ -120,7 +120,7 @@ export const translations = {
   am: {
     langName: "አማ",
     hero: {
-      name1: "ተስፋፂዮን መለሰ",
+      name1: "ተስፋፂዮን መለሰ (አቡ)",
       name2: "ዲቦራ እንዳለ",
       nameAmp: "",
       nameJoin: "እና",
