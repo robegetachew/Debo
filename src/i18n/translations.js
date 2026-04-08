@@ -206,7 +206,8 @@ export const translations = {
       errorGeneric: "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
       errorConnection: "ግንኙነት አልተሳካም። ቆይተው ይሞክሩ።",
       thankYou: "እናመሰግናለን!",
-      thankBody: "መልዕክትዎ እና ማረጋገጫዎ ተቀብለናል።\nከእኛ ጋር እንዲሆኑ እናመሰግናለን።",
+      thankBody:
+        "የእርስዎ ማረጋገጫ (RSVP) ተቀብለናል።\nበዚህ ደስታችን ቀን ከእርስዎ ጋር መሆናችን ታላቅ ክብር ነው።",
     },
     footer: {
       title: "ፎቶ ማጋራት እና ቀጥታ ስርጭት",

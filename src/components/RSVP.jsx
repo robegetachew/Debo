@@ -170,23 +170,25 @@ const RSVP = () => {
                         border: '1px solid rgba(92, 64, 51, 0.05)'
                     }}
                 >
-                    <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-                        <div style={{
-                            display: 'inline-flex',
-                            padding: '12px',
-                            background: 'rgba(212, 175, 55, 0.05)',
-                            borderRadius: '20px',
-                            marginBottom: '15px'
-                        }}>
-                            <MessageSquareHeart size={28} style={{ color: 'var(--gold)' }} />
+                    {!submitted && (
+                        <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                            <div style={{
+                                display: 'inline-flex',
+                                padding: '12px',
+                                background: 'rgba(212, 175, 55, 0.05)',
+                                borderRadius: '20px',
+                                marginBottom: '15px'
+                            }}>
+                                <MessageSquareHeart size={28} style={{ color: 'var(--gold)' }} />
+                            </div>
+                            <h2 className={`font-serif ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '2.4rem', color: 'var(--primary)', marginBottom: '10px' }}>
+                                {t('rsvp.title')} <span style={{ color: 'var(--gold)' }}>{t('rsvp.titleAccent')}</span>
+                            </h2>
+                            <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '1.1rem' }}>
+                                {t('rsvp.subtitle')}
+                            </p>
                         </div>
-                        <h2 className={`font-serif ${isAm ? 'font-ethiopic' : ''}`} style={{ fontSize: '2.4rem', color: 'var(--primary)', marginBottom: '10px' }}>
-                            {t('rsvp.title')} <span style={{ color: 'var(--gold)' }}>{t('rsvp.titleAccent')}</span>
-                        </h2>
-                        <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', opacity: 0.8, fontSize: '1.1rem' }}>
-                            {t('rsvp.subtitle')}
-                        </p>
-                    </div>
+                    )}
 
                     {!submitted ? (
                         <form onSubmit={handleSubmit}>

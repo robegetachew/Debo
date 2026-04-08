@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Hero from './components/Hero';
 import SaveTheDate from './components/SaveTheDate';
@@ -30,20 +30,28 @@ const Invitation = () => (
   </>
 );
 
-function App() {
-  const [showExplore, setShowExplore] = useState(true)
-
-  const handleExplore = () => {
-    setShowExplore(false)
-  }
+function AppRoutes() {
+  const location = useLocation();
+  const [showExplore, setShowExplore] = useState(true);
+  const isAdmin = location.pathname === '/admin';
 
   return (
-    <Router>
-      {showExplore && <ExplorePage onExplore={handleExplore} />}
+    <>
+      {showExplore && !isAdmin && (
+        <ExplorePage onExplore={() => setShowExplore(false)} />
+      )}
       <Routes>
         <Route path="/" element={<Invitation />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppRoutes />
     </Router>
   );
 }

@@ -5,6 +5,7 @@ import { Users, CheckCircle, MessageSquare, ShieldCheck, LogOut, ChevronLeft, Ey
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const Admin = () => {
+    const [username, setUsername] = useState('admin');
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [data, setData] = useState({ rsvps: [], stats: {} });
@@ -24,7 +25,10 @@ const Admin = () => {
         setError('');
         try {
             const response = await fetch(`${API_BASE}/api/admin/rsvps`, {
-                headers: { 'x-admin-password': pwd }
+                headers: {
+                    'x-admin-username': username,
+                    'x-admin-password': pwd
+                }
             });
             if (response.ok) {
                 const result = await response.json();
@@ -102,12 +106,29 @@ const Admin = () => {
                     <ShieldCheck size={48} style={{ color: 'var(--gold)', marginBottom: '20px' }} />
                     <h2 className="font-serif" style={{ color: 'var(--primary)', marginBottom: '10px' }}>Admin Login</h2>
                     <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', marginBottom: '30px' }}>
-                        Enter the password to access the RSVP dashboard.
+                        Sign in with the admin username and password (seeded in the database).
                     </p>
 
                     <form onSubmit={handleLogin}>
                         <input
+                            type="text"
+                            autoComplete="username"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '12px 16px',
+                                borderRadius: '12px',
+                                border: '1px solid var(--secondary)',
+                                marginBottom: '14px',
+                                outline: 'none',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                        <input
                             type="password"
+                            autoComplete="current-password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

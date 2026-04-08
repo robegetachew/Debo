@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
+    "dev-all": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node server/index.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "seed:admin": "node server/seed-admin.js"
   },
   "dependencies": {
     "cors": "^2.8.6",

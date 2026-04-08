@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { initDb } from './database.js';
+import { initDb, verifyAdminCredentials } from './database.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,19 +10,12 @@ const PORT = process.env.PORT || 5001;
 
 const app = express();
 const distPath = path.join(__dirname, '../dist');
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'change-me';
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(distPath));
 
 let db;
-
-// Initialize Database
-initDb().then(database => {
-    db = database;
-    console.log('Database initialized');
-});
 
 // RSVP Submission Endpoint
 app.post('/api/rsvp', async (req, res) => {
@@ -44,11 +37,13 @@ app.post('/api/rsvp', async (req, res) => {
     }
 });
 
-// Admin RSVP List Endpoint
+// Admin RSVP List Endpoint (username + password from seeded `admins` table; default admin / admin@123)
 app.get('/api/admin/rsvps', async (req, res) => {
+    const username = req.headers['x-admin-username'];
     const password = req.headers['x-admin-password'];
 
-    if (password !== ADMIN_PASSWORD) {
+    const ok = await verifyAdminCredentials(db, username, password);
+    if (!ok) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
@@ -75,6 +70,15 @@ app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+initDb()
+    .then((database) => {
+        db = database;
+        console.log('Database initialized');
+        app.listen(PORT, () => {
+            console.log(`Server running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error('Failed to start server:', err);
+        process.exit(1);
+    });
