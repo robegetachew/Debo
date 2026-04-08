@@ -103,9 +103,18 @@ export const translations = {
       submit: "Send RSVP",
       errorGeneric: "Something went wrong. Please try again.",
       errorConnection: "Connection error. Please try again later.",
+      nameInvalid:
+        "Please enter a valid full name for each guest (at least two letters, 2–120 characters).",
+      nameRequiredEach: "Please enter a full name in every guest field.",
       thankYou: "Thank You!",
       thankBody:
         "Your blessing and confirmation have been received.\nWe are so honored to have you with us.",
+      resultDuplicateTitle: "Already registered",
+      resultDuplicateBody:
+        "An RSVP with this name was already received. No changes were saved.",
+      resultDuplicateListIntro: "These names are already on our guest list:",
+      resultPartialDuplicateIntro:
+        "We saved the new guest name(s) from your RSVP. The name(s) below were already on our guest list from an earlier registration — we did not add them again:",
     },
     footer: {
       title: "Photo Sharing & Livestream",
@@ -205,9 +214,18 @@ export const translations = {
       submit: "ይላኩ",
       errorGeneric: "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
       errorConnection: "ግንኙነት አልተሳካም። ቆይተው ይሞክሩ።",
+      nameInvalid:
+        "እባክዎ ለእያንዳንዱ እንግዳ ትክክለኛ ሙሉ ስም ያስገቡ (ቢያንስ ሁለት ፊደላት፣ 2–120 ቁምፊዎች)።",
+      nameRequiredEach: "እባክዎ በእያንዳንዱ የእንግዳ ስም ቦታ ላይ ሙሉ ስም ያስገቡ።",
       thankYou: "እናመሰግናለን!",
       thankBody:
         "የእርስዎ ማረጋገጫ (RSVP) ተቀብለናል።\nበዚህ ደስታችን ቀን ከእርስዎ ጋር መሆናችን ታላቅ ክብር ነው።",
+      resultDuplicateTitle: "አስቀድሞ ተመዝግቧል",
+      resultDuplicateBody:
+        "በዚህ ስም የተመዘገበ ማረጋገጫ አስቀድሞ ተቀብለናል።",
+      resultDuplicateListIntro: "የሚከተሉት ስሞች አስቀድሞ በእንግዶቻችን ዝርዝር ላይ ናቸው፦",
+      resultPartialDuplicateIntro:
+        "አዳዲስ የእንግዳ ስሞች በRSVP በኩል ተመዝግበዋል። እነዚህ ስሞች ግን አስቀድመው የተመዘገቡ ስለሆኑ በድጋሚ አልተጨመሩም፦",
     },
     footer: {
       title: "ፎቶ ማጋራት እና ቀጥታ ስርጭት",

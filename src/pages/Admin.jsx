@@ -106,7 +106,7 @@ const Admin = () => {
                     <ShieldCheck size={48} style={{ color: 'var(--gold)', marginBottom: '20px' }} />
                     <h2 className="font-serif" style={{ color: 'var(--primary)', marginBottom: '10px' }}>Admin Login</h2>
                     <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', marginBottom: '30px' }}>
-                        Sign in with the admin username and password (seeded in the database).
+                        Sign in with the admin username and password.
                     </p>
 
                     <form onSubmit={handleLogin}>

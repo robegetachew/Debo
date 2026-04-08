@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { initDb, verifyAdminCredentials } from './database.js';
+import { buildRegisteredNameSet, isValidFullName, normalizeName } from './rsvpNames.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,20 +18,91 @@ app.use(express.static(distPath));
 
 let db;
 
-// RSVP Submission Endpoint
+// RSVP Submission Endpoint (validates full names; skips duplicate names already in DB)
 app.post('/api/rsvp', async (req, res) => {
-    const { name, guests, attending, message } = req.body;
+    const { name, names: namesFromBody, guests, attending, message } = req.body;
 
-    if (!name || !attending) {
-        return res.status(400).json({ error: 'Name and attendance status are required' });
+    const rawList = Array.isArray(namesFromBody) && namesFromBody.length > 0
+        ? namesFromBody.map((n) => String(n ?? ''))
+        : String(name || '')
+              .split(',')
+              .map((s) => s.trim())
+              .filter(Boolean);
+
+    const attendingVal = attending === 'no' ? 'no' : 'yes';
+
+    if (!rawList.length) {
+        return res.status(400).json({
+            error: 'validation',
+            code: 'missing_names',
+            message: 'Name and attendance status are required'
+        });
     }
 
+    for (const raw of rawList) {
+        const trimmed = raw.trim();
+        if (!trimmed) {
+            return res.status(400).json({
+                error: 'validation',
+                code: 'empty_name',
+                message: 'Each guest must have a full name'
+            });
+        }
+        if (!isValidFullName(trimmed)) {
+            return res.status(400).json({
+                error: 'validation',
+                code: 'invalid_name',
+                message: 'Please enter a valid full name for each guest (at least 2 letters).'
+            });
+        }
+    }
+
+    const submitted = rawList.map((r) => r.trim());
+
     try {
+        const rows = await db.all('SELECT name FROM rsvps');
+        const registered = buildRegisteredNameSet(rows);
+
+        const duplicateNames = [];
+        const newNames = [];
+        for (const raw of submitted) {
+            const key = normalizeName(raw);
+            if (registered.has(key)) {
+                duplicateNames.push(raw);
+            } else {
+                newNames.push(raw);
+            }
+        }
+
+        if (newNames.length === 0) {
+            return res.status(200).json({
+                ok: true,
+                result: 'all_duplicate',
+                duplicateNames
+            });
+        }
+
+        const displayName = newNames.join(', ');
+        const guestCount = newNames.length;
+
         await db.run(
             'INSERT INTO rsvps (name, guests, attending, message) VALUES (?, ?, ?, ?)',
-            [name, guests || 1, attending, message]
+            [displayName, guestCount, attendingVal, message ?? '']
         );
-        res.status(201).json({ message: 'RSVP submitted successfully' });
+
+        if (duplicateNames.length > 0) {
+            return res.status(201).json({
+                ok: true,
+                result: 'partial',
+                newNames,
+                duplicateNames
+            });
+        }
+
+        return res.status(201).json({
+            ok: true,
+            result: 'created'
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to save RSVP' });

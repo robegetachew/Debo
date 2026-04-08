@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, User, Users, Check, MessageSquareHeart } from 'lucide-react';
+import { Send, User, Users, Check, MessageSquareHeart, Info } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
+
+function clientValidFullName(s) {
+    const t = String(s).trim();
+    if (t.length < 2 || t.length > 120) return false;
+    const letters = t.match(/\p{L}/gu);
+    return Boolean(letters && letters.length >= 2);
+}
 
 const RSVP = () => {
     const { lang, t } = useLanguage();
@@ -18,6 +25,8 @@ const RSVP = () => {
     const [guestsInput, setGuestsInput] = useState('1');
 
     const [submitted, setSubmitted] = useState(false);
+    /** @type {null | { kind: 'thank' } | { kind: 'duplicate', duplicateNames: string[] } | { kind: 'partial', duplicateNames: string[], newNames: string[] }} */
+    const [submitResult, setSubmitResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState('');
 
@@ -58,28 +67,65 @@ const RSVP = () => {
         setLoading(true);
         setStatus('');
 
+        const trimmedNames = formData.names.map((n) => String(n).trim());
+        for (const nm of trimmedNames) {
+            if (!nm) {
+                setStatus(t('rsvp.nameRequiredEach'));
+                setLoading(false);
+                return;
+            }
+            if (!clientValidFullName(nm)) {
+                setStatus(t('rsvp.nameInvalid'));
+                setLoading(false);
+                return;
+            }
+        }
+
         try {
             const response = await fetch(`${API_BASE}/api/rsvp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    name: formData.names.join(', ')
+                    names: trimmedNames,
+                    name: trimmedNames.join(', ')
                 })
             });
 
-            if (response.ok) {
-                setSubmitted(true);
-                setFormData({
-                    names: [''],
-                    guests: 1,
-                    attending: 'yes',
-                    message: ''
-                });
-                setGuestsInput('1');
-            } else {
-                setStatus(t('rsvp.errorGeneric'));
+            const data = await response.json().catch(() => ({}));
+
+            if (response.status === 400 && data.error === 'validation') {
+                setStatus(data.message || t('rsvp.nameInvalid'));
+                setLoading(false);
+                return;
             }
+
+            if (!response.ok) {
+                setStatus(t('rsvp.errorGeneric'));
+                setLoading(false);
+                return;
+            }
+
+            if (data.result === 'all_duplicate') {
+                setSubmitResult({ kind: 'duplicate', duplicateNames: data.duplicateNames || [] });
+            } else if (data.result === 'partial') {
+                setSubmitResult({
+                    kind: 'partial',
+                    duplicateNames: data.duplicateNames || [],
+                    newNames: data.newNames || []
+                });
+            } else {
+                setSubmitResult({ kind: 'thank' });
+            }
+
+            setSubmitted(true);
+            setFormData({
+                names: [''],
+                guests: 1,
+                attending: 'yes',
+                message: ''
+            });
+            setGuestsInput('1');
         } catch (error) {
             setStatus(t('rsvp.errorConnection'));
         } finally {
@@ -303,41 +349,125 @@ const RSVP = () => {
                             </motion.button>
                         </form>
                     ) : (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            style={{
-                                padding: '80px 20px',
-                                textAlign: 'center',
-                                background: 'rgba(92, 64, 51, 0.03)',
-                                borderRadius: '24px',
-                                border: '2px dashed rgba(92, 64, 51, 0.1)'
-                            }}
-                        >
-                            <div style={{
-                                width: '80px',
-                                height: '80px',
-                                background: 'var(--primary)',
-                                color: 'white',
-                                borderRadius: '50%',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                margin: '0 auto 30px',
-                                boxShadow: '0 10px 30px rgba(92, 64, 51, 0.2)'
-                            }}>
-                                <Check size={40} />
-                            </div>
-                            <h3 className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '15px' }}>{t('rsvp.thankYou')}</h3>
-                            <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', fontSize: '1.2rem', lineHeight: '1.6' }}>
-                                {thankLines.map((line, i) => (
-                                    <span key={i}>
-                                        {line}
-                                        {i < thankLines.length - 1 && <br />}
-                                    </span>
-                                ))}
-                            </p>
-                        </motion.div>
+                        <>
+                            {(submitResult?.kind === 'thank' || submitResult?.kind === 'partial') && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    style={{
+                                        padding: '80px 20px',
+                                        textAlign: 'center',
+                                        background: 'rgba(92, 64, 51, 0.03)',
+                                        borderRadius: '24px',
+                                        border: '2px dashed rgba(92, 64, 51, 0.1)'
+                                    }}
+                                >
+                                    <div style={{
+                                        width: '80px',
+                                        height: '80px',
+                                        background: 'var(--primary)',
+                                        color: 'white',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        margin: '0 auto 30px',
+                                        boxShadow: '0 10px 30px rgba(92, 64, 51, 0.2)'
+                                    }}>
+                                        <Check size={40} />
+                                    </div>
+                                    <h3 className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '15px' }}>{t('rsvp.thankYou')}</h3>
+                                    <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                                        {thankLines.map((line, i) => (
+                                            <span key={i}>
+                                                {line}
+                                                {i < thankLines.length - 1 && <br />}
+                                            </span>
+                                        ))}
+                                    </p>
+
+                                    {submitResult?.kind === 'partial' && submitResult.duplicateNames.length > 0 && (
+                                        <div
+                                            className={isAm ? 'font-ethiopic' : ''}
+                                            style={{
+                                                marginTop: '28px',
+                                                padding: '20px 16px',
+                                                textAlign: 'left',
+                                                background: 'rgba(212, 175, 55, 0.08)',
+                                                borderRadius: '16px',
+                                                border: '1px solid rgba(212, 175, 55, 0.25)'
+                                            }}
+                                        >
+                                            <p style={{ color: 'var(--primary)', fontWeight: 600, marginBottom: '10px', fontSize: '0.95rem' }}>
+                                                {t('rsvp.resultPartialDuplicateIntro')}
+                                            </p>
+                                            <ul style={{ margin: 0, paddingLeft: '1.2rem', color: 'var(--text-light)', fontSize: '1rem', lineHeight: 1.7 }}>
+                                                {submitResult.duplicateNames.map((n) => (
+                                                    <li key={n}>{n}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </motion.div>
+                            )}
+
+                            {submitResult?.kind === 'duplicate' && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    style={{
+                                        padding: '80px 20px',
+                                        textAlign: 'center',
+                                        background: 'rgba(92, 64, 51, 0.03)',
+                                        borderRadius: '24px',
+                                        border: '2px dashed rgba(92, 64, 51, 0.1)'
+                                    }}
+                                >
+                                    <div style={{
+                                        width: '80px',
+                                        height: '80px',
+                                        background: 'rgba(212, 175, 55, 0.35)',
+                                        color: 'var(--primary)',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        margin: '0 auto 30px',
+                                        boxShadow: '0 10px 30px rgba(92, 64, 51, 0.12)'
+                                    }}>
+                                        <Info size={40} strokeWidth={2} />
+                                    </div>
+                                    <h3 className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '2.2rem', color: 'var(--primary)', marginBottom: '15px' }}>{t('rsvp.resultDuplicateTitle')}</h3>
+                                    {submitResult.duplicateNames.length <= 1 ? (
+                                        <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+                                            {t('rsvp.resultDuplicateBody')}
+                                        </p>
+                                    ) : (
+                                        <>
+                                            <p className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--text-light)', fontSize: '1.05rem', marginBottom: '12px' }}>
+                                                {t('rsvp.resultDuplicateListIntro')}
+                                            </p>
+                                            <ul
+                                                className={isAm ? 'font-ethiopic' : ''}
+                                                style={{
+                                                    textAlign: 'left',
+                                                    display: 'inline-block',
+                                                    margin: '0 auto',
+                                                    paddingLeft: '1.2rem',
+                                                    color: 'var(--text-light)',
+                                                    fontSize: '1.1rem',
+                                                    lineHeight: 1.7
+                                                }}
+                                            >
+                                                {submitResult.duplicateNames.map((n) => (
+                                                    <li key={n}>{n}</li>
+                                                ))}
+                                            </ul>
+                                        </>
+                                    )}
+                                </motion.div>
+                            )}
+                        </>
                     )}
                 </motion.div>
             </div>
