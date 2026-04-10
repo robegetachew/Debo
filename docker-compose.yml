@@ -1,8 +1,8 @@
 services:
-  backend:
+  public_backend:
     build:
       context: .
-      target: backend
+      target: public_backend
     environment:
       HOST: 0.0.0.0
       PORT: 5002
@@ -14,12 +14,12 @@ services:
       - "5002"
     restart: unless-stopped
 
-  web:
+  public_web:
     build:
       context: .
-      target: web
+      target: public_web
     depends_on:
-      - backend
+      - public_backend
     ports:
       - "3000:80"
     restart: unless-stopped
