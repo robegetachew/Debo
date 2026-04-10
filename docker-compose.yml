@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "5001:5001"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 5001
+      DATABASE_PATH: /app/data/wedding.db
+      ADMIN_PASSWORD: change-me
+    volumes:
+      - app-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  app-data:
