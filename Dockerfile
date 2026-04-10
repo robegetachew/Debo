@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim AS build
+FROM node:22-bookworm-slim AS frontend-build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:22-bookworm-slim AS runtime
+FROM node:22-bookworm-slim AS backend
 
 WORKDIR /app
 ENV NODE_ENV=production
@@ -19,11 +19,17 @@ ENV DATABASE_PATH=/app/data/wedding.db
 COPY package*.json ./
 RUN npm ci --omit=dev
 
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/server ./server
+COPY server ./server
 
 RUN mkdir -p /app/data
 
 EXPOSE 5001
 
 CMD ["npm", "start"]
+
+FROM nginx:1.27-alpine AS web
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=frontend-build /app/dist /usr/share/nginx/html
+
+EXPOSE 80

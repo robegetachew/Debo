@@ -1,9 +1,8 @@
 services:
-  app:
+  backend:
     build:
       context: .
-    ports:
-      - "5001:5001"
+      target: backend
     environment:
       HOST: 0.0.0.0
       PORT: 5001
@@ -11,6 +10,18 @@ services:
       ADMIN_PASSWORD: change-me
     volumes:
       - app-data:/app/data
+    expose:
+      - "5001"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      target: web
+    depends_on:
+      - backend
+    ports:
+      - "3030:80"
     restart: unless-stopped
 
 volumes:
