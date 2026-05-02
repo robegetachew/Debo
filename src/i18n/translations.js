@@ -110,6 +110,12 @@ export const translations = {
     footer: {
       title: "Photo Sharing & Livestream",
       tagline: "",
+      contactsIntro:
+        "If you need any help or guidance on our wedding day, please don’t hesitate to contact:",
+      contacts: [
+        { name: "Fikir", note: "Modjo", phone: "+251 900 138 105", tel: "+251900138105" },
+        { name: "Sitota", note: "Adama", phone: "+251 974 557 405", tel: "+251974557405" },
+      ],
       scanLine: "Kindly scan the QR code or ",
       clickHere: "click the link",
       joinTelegram:
@@ -153,15 +159,29 @@ export const translations = {
     program: {
       title: "የሠርግ ፕሮግራም",
       items: [
-        { time: "ከሰዓት 9:00 – 11:00", text: "የአምልኮ እና የቃልኪዳን ሥነሥርዓት" },
-        { time: "ከሰዓት 11:00 – 11:30", text: "ጉዞ ወደ ከረዩ ሪዞርት" },
-        { time: "ከሰዓት 11:30 – 2:00", text: "የፎቶ እና የኬክ ፕሮግራም" },
-        { time: "ማታ 2:00", text: "የፕሮግራም ማጠቃለያ" },
+        {
+          time: "ጠዋት 11:00 – 1:00",
+          text: "አጃቢዎች በሙሽሪት ወይም በሙሽራው መኖሪያ ቤት",
+        },
+        {
+          time: "ከሰዓት 1:00 – 2:00",
+          text: "የሙሽራው አጃቢዎች ጉዞ ወደ ሙሽሪት መኖሪያ ቤት",
+        },
+        {
+          time: "ከሰዓት 2:00 – 3:00",
+          text: "ጉዞ ወደ አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
+        },
+        { time: "ከሰዓት 3:00 – 5:00", text: "የአምልኮ እና የቃልኪዳን ሥነሥርዓት" },
+        { time: "ከሰዓት 5:00 – 5:30", text: "ጉዞ ወደ ከረዩ ሪዞርት" },
+        { time: "ከሰዓት 5:30 – 8:00", text: "የፎቶ እና የኬክ ፕሮግራም" },
+        { time: "ማታ 8:00", text: "የፕሮግራም ማጠቃለያ" },
       ],
     },
     venues: {
       title: "አድራሻ",
       items: [
+        { title: "የሙሽሪት መኖሪያ ቤት", mapLabel: "ካርታ ላይ የሙሽሪት ቤት ይክፈቱ" },
+        { title: "የሙሽራው መኖሪያ ቤት", mapLabel: "ካርታ ላይ የሙሽራ ቤት ይክፈቱ" },
         {
           title: "አዳማ ቤተል መሰረተ-ክርስቶስ ቤተክርስትያን",
           mapLabel: "ቤተክርስትያን በካርታ ይክፈቱ",
@@ -191,7 +211,7 @@ export const translations = {
       numGuests: "የእንግዳ ብዛት ቁጥር",
       guestNames: "የእንግዳ ስም",
       guestPlaceholder: (n) => `የእንግዳ ${n} ሙሉ ስም`,
-      message: "ለሙሽራው እና ለሙሽሪት መልዕክት",
+      message: "ለሙሽሪት እና ለሙሽራ መልዕክት",
       messagePlaceholder: "ከልብዎ የመጣ መልዕክትዎን እዚህ ይጻፉ...",
       sending: "በመላክ ላይ...",
       submit: "ይላኩ",
@@ -203,6 +223,12 @@ export const translations = {
     footer: {
       title: "ፎቶ ማጋራት እና ቀጥታ ስርጭት",
       tagline: "",
+      contactsIntro:
+        "በሠርጉ ቀን ማንኛውም እርዳታ ወይም መመሪያ ከፈለጉ እባክዎ ያግኙ፦",
+      contacts: [
+        { name: "Fikir", note: "Modjo", phone: "+251 900 138 105", tel: "+251900138105" },
+        { name: "Sitota", note: "Adama", phone: "+251 974 557 405", tel: "+251974557405" },
+      ],
       scanLine: "ይህንን QR Code ስካን አድርገው ወይም ",
       clickHere: "ይህንን ሊንክ",
       joinTelegram:

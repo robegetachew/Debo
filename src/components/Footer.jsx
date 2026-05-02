@@ -4,6 +4,8 @@ import { useLanguage } from '../context/LanguageContext';
 const Footer = () => {
     const { lang, t } = useLanguage();
     const isAm = lang === 'am';
+    const contacts = t('footer.contacts');
+    const hasContacts = Array.isArray(contacts) && contacts.length > 0;
 
     return (
         <footer style={{
@@ -48,6 +50,25 @@ const Footer = () => {
                         <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>{t('footer.clickHere')}</a>
                         {' '}{t('footer.joinTelegram')}
                     </p>
+                    {hasContacts ? (
+                        <div style={{ marginTop: '2rem', maxWidth: '420px', marginLeft: 'auto', marginRight: 'auto' }}>
+                            <p className={isAm ? 'font-ethiopic' : ''} style={{ fontSize: '0.9rem', opacity: 0.85, lineHeight: 1.6, marginBottom: '1rem' }}>
+                                {t('footer.contactsIntro')}
+                            </p>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.95rem', lineHeight: 1.8 }}>
+                                {contacts.map((c) => (
+                                    <li key={c.tel} style={{ marginBottom: '0.5rem' }}>
+                                        <span className={isAm ? 'font-ethiopic' : ''} style={{ color: 'var(--gold-light)' }}>{c.name}</span>
+                                        {c.note ? (
+                                            <span className={isAm ? 'font-ethiopic' : ''} style={{ opacity: 0.85 }}>{' '}({c.note})</span>
+                                        ) : null}
+                                        {' — '}
+                                        <a href={`tel:${c.tel}`} style={{ color: 'var(--cream)', textDecoration: 'underline' }}>{c.phone}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : null}
                 </div>
 
                 <div style={{
