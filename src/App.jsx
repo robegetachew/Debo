@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Hero from './components/Hero';
 import SaveTheDate from './components/SaveTheDate';
 import StoryCountdown from './components/StoryCountdown';
@@ -10,6 +11,7 @@ import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
 import ScrollEffects from './components/ScrollEffects';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import ExplorePage from './components/ExplorePage';
 import Admin from './pages/Admin';
 import './styles/globals.css';
 
@@ -29,8 +31,15 @@ const Invitation = () => (
 );
 
 function App() {
+  const [showExplore, setShowExplore] = useState(true)
+
+  const handleExplore = () => {
+    setShowExplore(false)
+  }
+
   return (
     <Router>
+      {showExplore && <ExplorePage onExplore={handleExplore} />}
       <Routes>
         <Route path="/" element={<Invitation />} />
         <Route path="/admin" element={<Admin />} />

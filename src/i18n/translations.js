@@ -44,18 +44,6 @@ export const translations = {
     program: {
       title: "Wedding Program",
       items: [
-        {
-          time: "11:00 AM – 1:00 PM",
-          text: "Guests gather separately at the Bride’s and Groom’s family homes",
-        },
-        {
-          time: "1:00 PM – 2:00 PM",
-          text: "Groom proceeds to the Bride’s home",
-        },
-        {
-          time: "2:00 PM – 3:00 PM",
-          text: "Departure to Adama Bethel MKC Church",
-        },
         { time: "3:00 PM – 5:00 PM", text: "Vow Ceremony & Worship Service" },
         { time: "5:00 PM – 5:30 PM", text: "Transfer to Kereyou Resort" },
         {
@@ -68,8 +56,6 @@ export const translations = {
     venues: {
       title: "Location Details",
       items: [
-        { title: "Bride's House", mapLabel: "Open Bride's House on map" },
-        { title: "Groom's House", mapLabel: "Open Groom's House on map" },
         { title: "The Church", mapLabel: "Open church on map" },
         { title: "The Reception", mapLabel: "Open reception on map" },
       ],

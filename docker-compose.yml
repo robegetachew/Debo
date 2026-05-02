@@ -1,0 +1,28 @@
+services:
+  public_backend:
+    build:
+      context: .
+      target: public_backend
+    environment:
+      HOST: 0.0.0.0
+      PORT: 5002
+      DATABASE_PATH: /app/data/wedding.db
+      ADMIN_PASSWORD: change-me
+    volumes:
+      - app-data:/app/data
+    expose:
+      - "5002"
+    restart: unless-stopped
+
+  public_web:
+    build:
+      context: .
+      target: public_web
+    depends_on:
+      - public_backend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+volumes:
+  app-data:
