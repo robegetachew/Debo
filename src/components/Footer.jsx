@@ -48,6 +48,35 @@ const Footer = () => {
                         <a href="https://t.me/+eLoPp2qdlQU1MGVk" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>{t('footer.clickHere')}</a>
                         {' '}{t('footer.joinTelegram')}
                     </p>
+
+                    <div
+                        className={isAm ? 'font-ethiopic' : ''}
+                        style={{
+                            maxWidth: '420px',
+                            margin: '2rem auto 0',
+                            padding: '1.25rem 1.5rem',
+                            background: 'rgba(250, 243, 224, 0.08)',
+                            borderRadius: '14px',
+                            border: '1px solid rgba(250, 243, 224, 0.2)',
+                            textAlign: 'left'
+                        }}
+                    >
+                        <p style={{ fontSize: '0.92rem', color: 'var(--cream)', opacity: 0.95, lineHeight: 1.65, marginBottom: '1rem' }}>
+                            {t('footer.contactsIntro')}
+                        </p>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.95rem', lineHeight: 1.85, color: 'var(--gold-light)' }}>
+                            {(t('footer.contacts') || []).map((c) => (
+                                <li key={c.tel} style={{ marginBottom: '0.85rem' }}>
+                                    <strong style={{ color: 'var(--cream)' }}>{c.name}</strong>
+                                    {c.note ? (
+                                        <span style={{ opacity: 0.9 }}>{' · '}{c.note}</span>
+                                    ) : null}
+                                    <br />
+                                    <a href={`tel:${c.tel}`} style={{ color: 'var(--gold-light)', textDecoration: 'underline' }}>{c.phone}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 <div style={{

@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
 const mapUrls = [
-    'https://maps.google.com/?q=Adama+Ethiopia',
+    'https://maps.app.goo.gl/GJy1gao1QNneku439?g_st=atm',
     'https://maps.google.com/?q=Adama+Ethiopia',
     'https://maps.google.com/?q=Adama+Bethel+MKC+Church',
     'https://maps.google.com/?q=Kereyou+Resort+Adama'
