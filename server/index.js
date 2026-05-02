@@ -7,18 +7,21 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 5001;
 
 const app = express();
 const distPath = path.join(__dirname, '../dist');
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'change-me';
+const CORS_ORIGIN = process.env.CORS_ORIGIN;
 
-app.use(cors());
+app.use(cors(CORS_ORIGIN ? { origin: CORS_ORIGIN } : undefined));
 app.use(express.json());
 app.use(express.static(distPath));
 
 let db;
 
-// RSVP Submission Endpoint (validates full names; skips duplicate names already in DB)
+// RSVP Submission Endpoint
 app.post('/api/rsvp', async (req, res) => {
     const { name, names: namesFromBody, guests, attending, message } = req.body;
 
@@ -142,15 +145,18 @@ app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
 });
 
-initDb()
-    .then((database) => {
-        db = database;
+async function startServer() {
+    try {
+        db = await initDb();
         console.log('Database initialized');
-        app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}`);
+
+        app.listen(PORT, HOST, () => {
+            console.log(`Server running on http://${HOST}:${PORT}`);
         });
-    })
-    .catch((err) => {
-        console.error('Failed to start server:', err);
+    } catch (error) {
+        console.error('Failed to start server:', error);
         process.exit(1);
-    });
+    }
+}
+
+startServer();
